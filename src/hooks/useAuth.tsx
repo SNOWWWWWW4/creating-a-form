@@ -119,7 +119,7 @@ const useAuth = () => {
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
       valid = false;
-    } else if (!/[?@#\$%\^&\*]/.test(password)) {
+    } else if (!/[?@#\$%\^&\*!]/.test(password)) {
       setPasswordError(
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
@@ -150,7 +150,7 @@ const useAuth = () => {
       );
     if (!/\d/.test(password))
       newSuggestions.push('Password should include at least one number');
-    if (!/[?@#\$%\^&\*]/.test(password))
+    if (!/[?@#\$%\^&\*!]/.test(password))
       newSuggestions.push(
         'Password should include at least one special character from (? ! @ # $ % ^ & *)'
       );

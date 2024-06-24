@@ -2,6 +2,7 @@ import FormField from "@/components/FormField";
 
 
 export default function Home() {
+
   return (
     <main className="min-h-screen grid grid-cols-1 sm:grid-cols-2 justify-between p-24">
       <section className="flex flex-col justify-center items-center">
