@@ -1,9 +1,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-
 const useAuth = () => {
-
   const router = useRouter();
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
@@ -26,7 +24,6 @@ const useAuth = () => {
   const [passwordStrength, setPasswordStrength] = useState<string>('');
   const [switchBool, setSwitchBool] = useState<boolean>(false);
   const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
-
 
   const validateInputs = () => {
     let valid = true;
@@ -59,11 +56,17 @@ const useAuth = () => {
     }
 
     const today = new Date().toISOString().split('T')[0];
+    const hundredYearsAgo = new Date();
+    hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100);
+
     if (dob === '') {
       setDobError('Date of Birth cannot be empty');
       valid = false;
     } else if (dob > today) {
       setDobError('Date of Birth cannot be a future date');
+      valid = false;
+    } else if (dob < hundredYearsAgo.toISOString().split('T')[0]) {
+      setDobError('Date of Birth cannot be more than 100 years in the past');
       valid = false;
     } else {
       setDobError('');
@@ -97,7 +100,6 @@ const useAuth = () => {
     } else {
       setPhoneError('');
     }
-
 
     if (password === '') {
       setPasswordError(
@@ -138,10 +140,9 @@ const useAuth = () => {
     return valid;
   };
 
-
-    const validatingPasswordStrength = () => {
+  const validatingPasswordStrength = () => {
     let newSuggestions = [];
-   
+
     if (password.length < 15)
       newSuggestions.push('Password should be at least 15 characters long');
     if (!/[A-Z]/.test(password))
@@ -166,20 +167,19 @@ const useAuth = () => {
     } else {
       setPasswordStrength('Are we being for real right now?');
     }
-  }
+  };
 
   const handleSubmit = async () => {
     if (!validateInputs()) return;
 
     try {
-        
-        setLoginSuccess(true);
-        
-        setTimeout(() => {
-            router.push('/pages/success');
-        }, 1000);
-        
-        resetFields()
+      setLoginSuccess(true);
+
+      setTimeout(() => {
+        router.push('/pages/success');
+      }, 1000);
+
+      resetFields();
     } catch (error: any) {
       handleErrors(error.message);
     }
