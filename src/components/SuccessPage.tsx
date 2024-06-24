@@ -11,7 +11,7 @@ const SuccessPage = () => {
     }
   return (
     <div className='min-h-screen bg-blue-200 flex flex-col justify-center items-center'>
-        <h1 className='text-3xl font-bold m-4'>Thank you for your submission!</h1>
+        <h1 className='text-3xl font-bold my-4 text-pretty  '>Thank you for your submission!</h1>
         <Button onClick={handleHome} className="mx-auto" variant="contained">Return to Home</Button>
     </div>
   )

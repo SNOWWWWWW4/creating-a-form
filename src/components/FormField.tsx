@@ -72,17 +72,16 @@ const FormField = () => {
   };
 
   useEffect(() => {
-    if(password) {
+    if (password) {
       validatingPasswordStrength();
     }
   }, [password]);
 
-  
   return (
     <>
-      <section className='w-full max-w-md bg-white shadow-md rounded-lg p-6 space-y-4 space-x-2'>
+      <section className='w-full max-w-lg bg-white shadow-md rounded-lg p-6 space-y-4'>
         <FormControl fullWidth>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 '>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <TextField
               label='First Name'
               variant='outlined'
@@ -91,6 +90,7 @@ const FormField = () => {
               error={!!firstNameError}
               helperText={firstNameError}
               onKeyDown={handleKeydown}
+              className='col-span-2 md:col-span-1'
               required
             />
             <TextField
@@ -101,6 +101,7 @@ const FormField = () => {
               error={!!lastNameError}
               helperText={lastNameError}
               onKeyDown={handleKeydown}
+              className='col-span-2 md:col-span-1'
               required
             />
             <TextField
@@ -110,6 +111,7 @@ const FormField = () => {
               error={!!dobError}
               helperText={dobError}
               onKeyDown={handleKeydown}
+              className='col-span-2 md:col-span-1'
               type='date'
               required
             />
@@ -121,6 +123,7 @@ const FormField = () => {
               error={!!phoneError}
               helperText={phoneError}
               onKeyDown={handleKeydown}
+              className='col-span-2 md:col-span-1'
             />
             <TextField
               label='Email'
@@ -162,6 +165,7 @@ const FormField = () => {
                   </InputAdornment>
                 ),
               }}
+              className='col-span-2 md:col-span-1'
               required
             />
             <TextField
@@ -182,6 +186,7 @@ const FormField = () => {
                   </InputAdornment>
                 ),
               }}
+              className='col-span-2 md:col-span-1'
               required
             />
             {password && (
