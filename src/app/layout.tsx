@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Crating a Form",
+  title: "Creating a Form",
   description: "Created with Next.js, Material UI, and Tailwind CSS",
 };
 
