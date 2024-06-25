@@ -53,13 +53,8 @@ const FormField = () => {
   const [visible, setVisible] = useState(false);
   const [visibleTwo, setVisibleTwo] = useState(false);
 
-  const handleEyeClick = () => {
-    setVisible(!visible);
-  };
-
-  const handleEyeClickTwo = () => {
-    setVisibleTwo(!visibleTwo);
-  };
+  const handleEyeClick = () => setVisible(!visible);
+  const handleEyeClickTwo = () => setVisibleTwo(!visibleTwo);
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
