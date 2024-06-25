@@ -91,7 +91,7 @@ const useAuth = () => {
     if (phone !== '') {
       if (!/^\(\d{3}\)-\d{3}-\d{4}$/.test(phone)) {
         setPhoneError(
-          'Phone number must match the format: (123)-456-7890. Include dashes in the number.'
+          'Phone number must match the format: (123)-456-7890. Include dashes in the number and parantheses.'
         );
         valid = false;
       } else {
