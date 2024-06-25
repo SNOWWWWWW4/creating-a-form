@@ -70,7 +70,7 @@ const FormField = () => {
     if (password) {
       validatingPasswordStrength();
     }
-  }, [password]);
+  }, [password, validatingPasswordStrength]);
 
   return (
     <>
