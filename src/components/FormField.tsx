@@ -72,11 +72,11 @@ const FormField = () => {
     }
   }, [password, validatingPasswordStrength]);
 
-   const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split('T')[0];
 
-   const hundredYearsAgo = new Date();
-   hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100);
-   const formattedHundredYearsAgo = hundredYearsAgo.toISOString().split('T')[0];
+  const hundredYearsAgo = new Date();
+  hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100);
+  const formattedHundredYearsAgo = hundredYearsAgo.toISOString().split('T')[0];
 
   return (
     <>
