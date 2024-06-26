@@ -72,6 +72,12 @@ const FormField = () => {
     }
   }, [password, validatingPasswordStrength]);
 
+   const today = new Date().toISOString().split('T')[0];
+
+   const hundredYearsAgo = new Date();
+   hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100);
+   const formattedHundredYearsAgo = hundredYearsAgo.toISOString().split('T')[0];
+
   return (
     <>
       <section className='w-full max-w-lg bg-white shadow-md rounded-lg p-6 space-y-4'>
@@ -108,6 +114,9 @@ const FormField = () => {
               onKeyDown={handleKeydown}
               className='col-span-2 md:col-span-1'
               type='date'
+              InputProps={{
+                inputProps: { min: formattedHundredYearsAgo, max: today },
+              }}
               required
             />
             <TextField
