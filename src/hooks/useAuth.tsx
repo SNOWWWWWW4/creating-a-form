@@ -1,4 +1,4 @@
-import { IUsers } from '@/Interfaces/Interfaces';
+import { IUsers } from '@/interfaces/Interfaces';
 import { createRegirstration } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
