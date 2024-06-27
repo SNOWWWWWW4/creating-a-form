@@ -1,10 +1,10 @@
 export interface IUsers {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;  
-    dob: string;   
-    phone: string;
-    address: string; 
-    password: string;
+    _id: number;
+    First: string;
+    Last: string;
+    Email: string;  
+    DoB: string;   
+    Phone: string;
+    Address: string; 
+    Password: string;
 }

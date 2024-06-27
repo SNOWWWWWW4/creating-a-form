@@ -1,3 +1,5 @@
+import { IUsers } from '@/Interfaces/Interfaces';
+import { createRegirstration } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -174,6 +176,19 @@ const useAuth = () => {
 
     try {
       setLoginSuccess(true);
+
+      const userData : IUsers = {
+        _id: 0,
+        First: firstName,
+        Last: lastName,
+        Email: email,
+        DoB: dob,
+        Address: address,
+        Phone: phone,
+        Password : password 
+      }
+
+      await createRegirstration(userData)
 
       setTimeout(() => {
         router.push('/pages/success');
