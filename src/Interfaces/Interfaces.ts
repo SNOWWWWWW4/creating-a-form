@@ -4,7 +4,7 @@ export interface IUsers {
     Last: string;
     Email: string;  
     DoB: string;   
-    Phone: string;
-    Address: string; 
+    Phone: string | null;
+    Address: string | null; 
     Password: string;
 }
