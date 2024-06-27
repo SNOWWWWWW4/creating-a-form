@@ -1,5 +1,6 @@
+import { IUsers } from '@/Interfaces/Interfaces';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useAuth = () => {
   const router = useRouter();
@@ -11,6 +12,7 @@ const useAuth = () => {
   const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [formData, setFormData] = useState<IUsers>();
 
   const [firstNameError, setFirstNameError] = useState<string>('');
   const [lastNameError, setLastNameError] = useState<string>('');
@@ -184,6 +186,24 @@ const useAuth = () => {
       handleErrors(error.message);
     }
   };
+
+  useEffect(() => {
+    const formEffect = {
+      id: 0,
+      firstName: firstName,
+      lastName: lastName,
+      dob: dob,
+      phone: phone,
+      email: email,
+      address: address,
+      password: password,
+    };
+    setFormData(formEffect);
+  }, [firstName, lastName, dob, phone, email, address, password]);
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   const resetFields = () => {
     setFirstName('');
