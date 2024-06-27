@@ -18,8 +18,8 @@ const useAuth = () => {
   const [lastNameError, setLastNameError] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [dobError, setDobError] = useState<string>('');
-  const [addressError, setAddressError] = useState<string>('');
-  const [phoneError, setPhoneError] = useState<string>('');
+  const [addressError, setAddressError] = useState<string | null>('');
+  const [phoneError, setPhoneError] = useState<string | null>('');
   const [passwordError, setPasswordError] = useState<string>('');
   const [confirmPasswordError, setConfirmPasswordError] = useState<string>('');
 
@@ -187,8 +187,9 @@ const useAuth = () => {
           Password : password 
         }
   
-        await createRegirstration(userData)
-  
+        const info = await createRegirstration(userData)
+        console.log(info)
+
         setTimeout(() => {
           router.push('/pages/success');
         }, 1000);
@@ -200,10 +201,6 @@ const useAuth = () => {
         setLoginSuccess(false);
       }
 
-    }else {
-      alert('Something went wrong, please try again');
-      resetFields();
-      setLoginSuccess(false);
     }
 
   };
@@ -237,7 +234,7 @@ const useAuth = () => {
     } else if (errorMessage.includes('confirmPassword')) {
       setConfirmPasswordError(errorMessage); // meassage here
     } else {
-      alert(errorMessage);
+      console.log(errorMessage);
     }
   };
 
