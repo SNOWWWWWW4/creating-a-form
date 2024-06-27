@@ -172,32 +172,40 @@ const useAuth = () => {
   };
 
   const handleSubmit = async () => {
-    if (!validateInputs()) return;
-
-    try {
-      setLoginSuccess(true);
-
-      const userData : IUsers = {
-        _id: 0,
-        First: firstName,
-        Last: lastName,
-        Email: email,
-        DoB: dob,
-        Address: address,
-        Phone: phone,
-        Password : password 
+    if (validateInputs()) {
+      try {
+        setLoginSuccess(true);
+  
+        const userData : IUsers = {
+          _id: 0,
+          First: firstName,
+          Last: lastName,
+          Email: email,
+          DoB: dob,
+          Address: address,
+          Phone: phone,
+          Password : password 
+        }
+  
+        await createRegirstration(userData)
+  
+        setTimeout(() => {
+          router.push('/pages/success');
+        }, 1000);
+  
+        resetFields();
+      } catch (error: any) {
+        handleErrors(error.message);
+        resetFields();
+        setLoginSuccess(false);
       }
 
-      await createRegirstration(userData)
-
-      setTimeout(() => {
-        router.push('/pages/success');
-      }, 1000);
-
+    }else {
+      alert('Something went wrong, please try again');
       resetFields();
-    } catch (error: any) {
-      handleErrors(error.message);
+      setLoginSuccess(false);
     }
+
   };
 
   const resetFields = () => {
