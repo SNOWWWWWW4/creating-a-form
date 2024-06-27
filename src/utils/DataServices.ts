@@ -1,6 +1,6 @@
 import { IUsers } from "@/Interfaces/Interfaces";
 
-const url = 'https://codestackform.azurewebsites.net/';
+const url = 'https://codestackform.azurewebsites.net';
 
 export const createRegirstration = async (data: IUsers) => {
     const res = await fetch(url  + '/AddUser', {
@@ -22,6 +22,6 @@ export const createRegirstration = async (data: IUsers) => {
 
 export const getAllUsers = async () => {
     const res = await fetch(url + '/GetUsers');
-    const data = await res.json();
+    const data: IUsers[] = await res.json();
     return data;
 }
