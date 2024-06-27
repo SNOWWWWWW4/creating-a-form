@@ -80,7 +80,7 @@ const FormField = () => {
 
   return (
     <>
-      <section className='w-full max-w-lg bg-white shadow-md rounded-lg p-6 space-y-4'>
+      <section className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
         <FormControl fullWidth>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <TextField
