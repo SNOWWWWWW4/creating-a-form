@@ -16,6 +16,7 @@ export const createRegirstration = async (data: IUsers) => {
   }
   const dt = await res.json();
   return dt;
+  
 };
 
 export const getAllUsers = async () => {

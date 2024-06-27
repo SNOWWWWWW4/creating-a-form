@@ -172,7 +172,9 @@ const useAuth = () => {
   };
 
   const handleSubmit = async () => {
-    if (validateInputs()) {
+
+    if (!validateInputs()) return;
+    
       try {
         setLoginSuccess(true);
   
@@ -200,11 +202,7 @@ const useAuth = () => {
         setLoginSuccess(false);
       }
 
-    }else {
-      alert('Something went wrong, please try again');
-      resetFields();
-      setLoginSuccess(false);
-    }
+  
 
   };
 
