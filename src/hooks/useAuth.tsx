@@ -3,6 +3,8 @@ import { createRegirstration } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
+
+// TO BE DELETED LATER ONCE WE HAVE THE OTHER FORMS COMEPLETED AND WORRKING
 const useAuth = () => {
   const router = useRouter();
   const [firstName, setFirstName] = useState<string>('');
@@ -26,6 +28,7 @@ const useAuth = () => {
   const [passwordStrength, setPasswordStrength] = useState<string>('');
   const [switchBool, setSwitchBool] = useState<boolean>(false);
   const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
+
 
   const validateInputs = () => {
     let valid = true;
@@ -151,14 +154,15 @@ const useAuth = () => {
         setLoginSuccess(true);
   
         const userData : IUsers = {
-          _id: 0,
+          Id: 0,
           First: firstName,
           Last: lastName,
           Email: email,
-          DoB: dob,
+          DoB: new Date(dob).toISOString(),
           Address: address,
           Phone: phone,
-          Password : password 
+          Password : password,
+          SubmitTime: new Date().toISOString()
         }
   
         const info = await createRegirstration(userData)

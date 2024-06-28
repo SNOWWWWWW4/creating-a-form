@@ -1,7 +1,9 @@
-import { IUsers } from '@/Interfaces/Interfaces';
+import { ILogin, IUsers } from '@/Interfaces/Interfaces';
 
 const url = 'https://codestackform.azurewebsites.net';
 
+
+// **** Form submission ****
 export const createRegirstration = async (data: IUsers) => {
   const res = await fetch(url + '/AddUser', {
     method: 'POST',
@@ -19,8 +21,29 @@ export const createRegirstration = async (data: IUsers) => {
   // return dt;
 };
 
+// **** Getring all users ****
 export const getAllUsers = async () => {
   const res = await fetch(url + '/GetUsers');
   const data: IUsers[] = await res.json();
   return data;
+};
+
+
+// **** Create account ****
+export const createAccount = async (loginUser: ILogin) => {
+
+};
+
+//// **** Login ****
+export const login = async (loginUser: ILogin) => {
+  
+};
+
+export const getLoggedInUserData = async (email: string) => {
+  
+};
+
+// **** UpdatePassword ****
+export const updatePassword = async (email: string, password: string) => {
+  
 };
