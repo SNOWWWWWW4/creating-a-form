@@ -1,7 +1,7 @@
 import { IUsers } from '@/Interfaces/Interfaces';
 import { createRegirstration } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 // TO BE DELETED LATER ONCE WE HAVE THE OTHER FORMS COMEPLETED AND WORRKING
@@ -15,6 +15,7 @@ const useAuth = () => {
   const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [formData, setFormData] = useState<IUsers>();
 
   const [firstNameError, setFirstNameError] = useState<string>('');
   const [lastNameError, setLastNameError] = useState<string>('');
