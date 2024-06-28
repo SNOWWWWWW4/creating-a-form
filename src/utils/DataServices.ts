@@ -14,8 +14,9 @@ export const createRegirstration = async (data: IUsers) => {
   if (!res.ok) {
     Error(`An error has occured: ${res.status}`);
   }
-  const dt = await res.json();
-  return dt;
+  const dt = await res.text();
+  console.log(dt)
+  // return dt;
 };
 
 export const getAllUsers = async () => {

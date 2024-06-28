@@ -19,8 +19,8 @@ const useAuth = () => {
   const [lastNameError, setLastNameError] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [dobError, setDobError] = useState<string>('');
-  const [addressError, setAddressError] = useState<string>('');
-  const [phoneError, setPhoneError] = useState<string>('');
+  const [addressError, setAddressError] = useState<string | null>('');
+  const [phoneError, setPhoneError] = useState<string | null>('');
   const [passwordError, setPasswordError] = useState<string>('');
   const [confirmPasswordError, setConfirmPasswordError] = useState<string>('');
 
@@ -143,62 +143,41 @@ const useAuth = () => {
     return valid;
   };
 
-  const validatingPasswordStrength = () => {
-    let newSuggestions = [];
-
-    if (password.length < 15)
-      newSuggestions.push('Password should be at least 15 characters long');
-    if (!/[A-Z]/.test(password))
-      newSuggestions.push(
-        'Password should include at least one uppercase letter'
-      );
-    if (!/\d/.test(password))
-      newSuggestions.push('Password should include at least one number');
-    if (!/[?@#\$%\^&\*!]/.test(password))
-      newSuggestions.push(
-        'Password should include at least one special character from (? ! @ # $ % ^ & *)'
-      );
-
-    if (newSuggestions.length === 0) {
-      setPasswordStrength('Very Strong');
-    } else if (newSuggestions.length <= 1) {
-      setPasswordStrength('Strong');
-    } else if (newSuggestions.length <= 2) {
-      setPasswordStrength('Moderate');
-    } else if (newSuggestions.length <= 3) {
-      setPasswordStrength('Weak');
-    } else {
-      setPasswordStrength('Are we being for real right now?');
-    }
-  };
 
   const handleSubmit = async () => {
+
     if (!validateInputs()) return;
+    
+      try {
+        setLoginSuccess(true);
+  
+        const userData : IUsers = {
+          _id: 0,
+          First: firstName,
+          Last: lastName,
+          Email: email,
+          DoB: dob,
+          Address: address,
+          Phone: phone,
+          Password : password 
+        }
+  
+        const info = await createRegirstration(userData)
+        console.log(info)
 
-    try {
-      setLoginSuccess(true);
-
-      const userData : IUsers = {
-        _id: 0,
-        First: firstName,
-        Last: lastName,
-        Email: email,
-        DoB: dob,
-        Address: address,
-        Phone: phone,
-        Password : password 
+        setTimeout(() => {
+          router.push('/pages/success');
+        }, 1000);
+  
+        resetFields();
+      } catch (error: any) {
+        handleErrors(error.message);
+        resetFields();
+        setLoginSuccess(false);
       }
 
-      await createRegirstration(userData)
+  
 
-      setTimeout(() => {
-        router.push('/pages/success');
-      }, 1000);
-
-      resetFields();
-    } catch (error: any) {
-      handleErrors(error.message);
-    }
   };
 
   useEffect(() => {
@@ -248,7 +227,7 @@ const useAuth = () => {
     } else if (errorMessage.includes('confirmPassword')) {
       setConfirmPasswordError(errorMessage); // meassage here
     } else {
-      alert(errorMessage);
+      console.log(errorMessage);
     }
   };
 
@@ -283,7 +262,7 @@ const useAuth = () => {
     setSwitchBool,
     loginSuccess,
     setLoginSuccess,
-    validatingPasswordStrength,
+   
   };
 };
 

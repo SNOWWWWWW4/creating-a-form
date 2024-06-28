@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import useAuth from '@/hooks/useAuth';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Check, Visibility, VisibilityOff } from '@mui/icons-material';
 import {
   Alert,
   Button,
@@ -12,6 +12,9 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+import { green, red } from '@mui/material/colors';
 
 const FormField = () => {
   const {
@@ -41,7 +44,6 @@ const FormField = () => {
     confirmPasswordError,
     handleSubmit,
     passwordStrength,
-    validatingPasswordStrength,
     loginSuccess,
     setLoginSuccess,
   } = useAuth();
@@ -52,6 +54,10 @@ const FormField = () => {
 
   const [visible, setVisible] = useState(false);
   const [visibleTwo, setVisibleTwo] = useState(false);
+
+  const [cap, setCap] = useState(false);
+  const [spec, setSpec] = useState(false);
+  const [num, setNum] = useState(false);
 
   const handleEyeClick = () => setVisible(!visible);
   const handleEyeClickTwo = () => setVisibleTwo(!visibleTwo);
@@ -67,10 +73,31 @@ const FormField = () => {
   };
 
   useEffect(() => {
-    if (password) {
-      validatingPasswordStrength();
+    const caps = /[A-Z]/;
+    if (caps.test(password)) {
+      setCap(true);
+    } else {
+      setCap(false);
     }
-  }, [password, validatingPasswordStrength]);
+  }, [password]);
+
+  useEffect(() => {
+    const nums = /[0-9]/;
+    if (nums.test(password)) {
+      setNum(true);
+    } else {
+      setNum(false);
+    }
+  }, [password]);
+
+  useEffect(() => {
+    const specials = /[?@#!$%^&*]/;
+    if (specials.test(password)) {
+      setSpec(true);
+    } else {
+      setSpec(false);
+    }
+  }, [password]);
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -193,11 +220,84 @@ const FormField = () => {
               className='col-span-2 md:col-span-1'
               required
             />
-            {password && (
-              <Typography className='col-span-2'>
-                Password Strength = {passwordStrength}
+
+            {/* password requirements */}
+            <div className='col-span-2'>
+              <Typography variant='body1' className='font-medium mb-2'>
+                Password Requirements
               </Typography>
-            )}
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+                <div className='flex'>
+                  <CloseIcon
+                    className={`${password.length > 14 ? 'hidden' : ''}`}
+                    sx={{ color: red[500] }}
+                  />
+                  <Check
+                    className={`${password.length > 14 ? '' : 'hidden'}`}
+                    sx={{ color: green[500] }}
+                  />
+                  <p
+                    className={`${
+                      password.length > 14 ? 'text-green-600' : 'text-red-600'
+                    } text-xs my-auto`}
+                  >
+                    15 or more Characters long
+                  </p>
+                </div>
+                <div className='flex'>
+                  <CloseIcon
+                    className={`${cap ? 'hidden' : ''}`}
+                    sx={{ color: red[500] }}
+                  />
+                  <Check
+                    className={`${cap ? '' : 'hidden'}`}
+                    sx={{ color: green[500] }}
+                  />
+                  <p
+                    className={`${
+                      cap ? 'text-green-600' : 'text-red-600'
+                    } text-xs my-auto`}
+                  >
+                    Contains an uppercase letter
+                  </p>
+                </div>
+                <div className='flex'>
+                  <CloseIcon
+                    className={`${num ? 'hidden' : ''}`}
+                    sx={{ color: red[500] }}
+                  />
+                  <Check
+                    className={`${num ? '' : 'hidden'}`}
+                    sx={{ color: green[500] }}
+                  />
+                  <p
+                    className={`${
+                      num ? 'text-green-600' : 'text-red-600'
+                    } text-xs my-auto`}
+                  >
+                    Contains a number
+                  </p>
+                </div>
+                <div className='flex'>
+                  <CloseIcon
+                    className={`${spec ? 'hidden' : ''}`}
+                    sx={{ color: red[500] }}
+                  />
+                  <Check
+                    className={`${spec ? '' : 'hidden'}`}
+                    sx={{ color: green[500] }}
+                  />
+                  <p
+                    className={`${
+                      spec ? 'text-green-600' : 'text-red-600'
+                    } text-xs my-auto`}
+                  >
+                    Includes one of the following special characters: !@#$%^&*
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <Button
               onClick={handleSubmit}
               variant='contained'
