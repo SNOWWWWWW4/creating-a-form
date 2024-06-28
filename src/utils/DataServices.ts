@@ -1,4 +1,4 @@
-import { IUsers } from '@/interfaces/Interfaces';
+import { IUsers } from '@/Interfaces/Interfaces';
 
 const url = 'https://codestackform.azurewebsites.net';
 
