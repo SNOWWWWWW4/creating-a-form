@@ -2,13 +2,6 @@ import { IFormData } from '@/Interfaces/Interfaces';
 import { createRegirstration } from '@/utils/DataServices';
 import React, { useState } from 'react'
 
-// first
-// last
-// email
-// dob
-// address
-// phone
-
 const useFormValidation = () => {
 
     const [firstName, setFirstName] = useState<string>('');
