@@ -184,24 +184,6 @@ const useAuth = () => {
 
   };
 
-  useEffect(() => {
-    const formEffect = {
-      id: 0,
-      firstName: firstName,
-      lastName: lastName,
-      dob: dob,
-      phone: phone,
-      email: email,
-      address: address,
-      password: password,
-    };
-    setFormData(formEffect);
-  }, [firstName, lastName, dob, phone, email, address, password]);
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
-
   const resetFields = () => {
     setFirstName('');
     setLastName('');
