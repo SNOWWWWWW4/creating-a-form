@@ -16,7 +16,9 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { green, red } from '@mui/material/colors';
 
-const FormField = () => {
+// TO BE DELETED LATER ONCE WE HAVE THE OTHER FORMS COMEPLETED AND WORRKING
+
+const OrginalForm = () => {
   const {
     firstName,
     setFirstName,
@@ -328,4 +330,4 @@ const FormField = () => {
   );
 };
 
-export default FormField;
+export default OrginalForm;
