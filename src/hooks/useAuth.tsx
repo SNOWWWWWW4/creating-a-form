@@ -142,34 +142,6 @@ const useAuth = () => {
     return valid;
   };
 
-  const validatingPasswordStrength = () => {
-    let newSuggestions = [];
-
-    if (password.length < 15)
-      newSuggestions.push('Password should be at least 15 characters long');
-    if (!/[A-Z]/.test(password))
-      newSuggestions.push(
-        'Password should include at least one uppercase letter'
-      );
-    if (!/\d/.test(password))
-      newSuggestions.push('Password should include at least one number');
-    if (!/[?@#\$%\^&\*!]/.test(password))
-      newSuggestions.push(
-        'Password should include at least one special character from (? ! @ # $ % ^ & *)'
-      );
-
-    if (newSuggestions.length === 0) {
-      setPasswordStrength('Very Strong');
-    } else if (newSuggestions.length <= 1) {
-      setPasswordStrength('Strong');
-    } else if (newSuggestions.length <= 2) {
-      setPasswordStrength('Moderate');
-    } else if (newSuggestions.length <= 3) {
-      setPasswordStrength('Weak');
-    } else {
-      setPasswordStrength('Are we being for real right now?');
-    }
-  };
 
   const handleSubmit = async () => {
 
@@ -271,7 +243,7 @@ const useAuth = () => {
     setSwitchBool,
     loginSuccess,
     setLoginSuccess,
-    validatingPasswordStrength,
+   
   };
 };
 
