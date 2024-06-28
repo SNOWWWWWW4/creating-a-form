@@ -80,9 +80,9 @@ const HomeFormComponent = () => {
 
   return (
     <>
-      <section className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
+      <div className='w-full bg-[#ffffff] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
         <FormControl fullWidth>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          <div className='grid grid-cols-2 gap-4'>
             <TextField
               label='First Name'
               variant='outlined'
@@ -91,7 +91,7 @@ const HomeFormComponent = () => {
               error={!!firstNameError}
               helperText={firstNameError}
               onKeyDown={handleKeydown}
-              className='col-span-2 md:col-span-1'
+              className='col-span-2 sm:col-span-1'
               required
             />
             <TextField
@@ -102,7 +102,7 @@ const HomeFormComponent = () => {
               error={!!lastNameError}
               helperText={lastNameError}
               onKeyDown={handleKeydown}
-              className='col-span-2 md:col-span-1'
+              className='col-span-2 sm:col-span-1'
               required
             />
             <TextField
@@ -112,7 +112,7 @@ const HomeFormComponent = () => {
               error={!!dobError}
               helperText={dobError}
               onKeyDown={handleKeydown}
-              className='col-span-2 md:col-span-1'
+              className='col-span-2 sm:col-span-1'
               type='date'
               InputProps={{
                 inputProps: { min: formattedHundredYearsAgo, max: today },
@@ -127,7 +127,7 @@ const HomeFormComponent = () => {
               error={!!phoneError}
               helperText={phoneError}
               onKeyDown={handleKeydown}
-              className='col-span-2 md:col-span-1'
+              className='col-span-2 sm:col-span-1'
             />
             <TextField
               label='Email'
@@ -161,7 +161,7 @@ const HomeFormComponent = () => {
             </Button>
           </div>
         </FormControl>
-      </section>
+      </div>
       <Snackbar
         open={loginSuccess}
         autoHideDuration={3500}
