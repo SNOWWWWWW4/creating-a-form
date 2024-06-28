@@ -2,9 +2,6 @@ import { updatePassword } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
-// email
-// old password
-// new password
 
 const useResetPassword = () => {
 
@@ -18,7 +15,7 @@ const useResetPassword = () => {
   const [newPasswordError, setNewPasswordError] = useState<string>('');
   const [confrimNewPasswordError, setConfrimNewPasswordError] = useState<string>('');
 
-  const [switchBool, setSwitchBool] = useState<boolean>(false);
+  const [switchBoolTwo, setSwitchBoolTwo] = useState<boolean>(false);
   const [successfulPasswordReset, setSuccessfulPasswordReset] = useState<boolean>(false);
 
   const router = useRouter();
@@ -68,7 +65,7 @@ const useResetPassword = () => {
     if (!validatingFirstSetOfInputs()) return;
     
     try {
-      setSwitchBool(true);
+      setSwitchBoolTwo(true);
     } catch (error: any) {
       handleErrors(error.message);
     }
@@ -126,7 +123,7 @@ const useResetPassword = () => {
       //       setTimeout(() => {
       //         router.push('/')
       //         resetFields();
-      //         setSwitchBool(false);
+      //         setSwitchBoolTwo(false);
       //       }, 1000)
       //     }
       // })
@@ -174,7 +171,9 @@ const useResetPassword = () => {
     confrimNewPasswordError,
     handleContinue,
     handleUpdatePassword,
-    resetFields
+    resetFields,
+    switchBoolTwo,
+    setSwitchBoolTwo,
   }
 }
 

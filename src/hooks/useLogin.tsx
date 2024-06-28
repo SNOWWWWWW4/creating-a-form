@@ -20,6 +20,7 @@ const useLogin = () => {
   const [createAccSuccess, setCreateAccSuccess] = useState<boolean>(false);
   const [switchBool, setSwitchBool] = useState<boolean>(false);
   const [admin, setAdmin] = useState<boolean>(false);
+  const [changePass, setChangePass] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -168,9 +169,11 @@ const useLogin = () => {
     loginSuccess,
     setLoginSuccess,
     emailError,
-    passwordError,
+    passwordError, 
     confirmPasswordError,
     handleSumit,
+    changePass,
+    setChangePass,
   };
 };
 
