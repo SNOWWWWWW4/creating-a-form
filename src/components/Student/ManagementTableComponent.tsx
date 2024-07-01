@@ -4,11 +4,11 @@ import deleteIcon from '@/assets/TrashIcon.png';
 import Image from 'next/image';
 import StudentDeleteComponent from './StudentDeleteComponent';
 
-const StudentTableComponent = (props: {setIsDelete:(input:boolean)=>void, setIsEdit:(input:boolean)=>void}) => {
+const ManagementTableComponent = (props: {setIsDelete:(input:boolean)=>void, setIsEdit:(input:boolean)=>void}) => {
   return (
 <div>
     
-    <div className='hidden lg:grid grid-cols-8 border-y-[#ddc7cb] border-y-[1px]'>
+    <div className='hidden lg:grid grid-cols-5 border-y-[#ddc7cb] border-y-[1px]'>
 <div className='col-span-1 px-1 border-r-[#ddc7cb] border-r-[1px] flex items-center break-all'>
   {"First"}
 </div>
@@ -18,14 +18,10 @@ const StudentTableComponent = (props: {setIsDelete:(input:boolean)=>void, setIsE
 <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
   {"12-31-2024"}
 </div>
-<div className='col-span-2 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
+<div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
   {"hello@gmail.com"}
 </div>
-<div className='col-span-1 px-1 border-l-[#ddc7cb] border-l-[1px] flex items-center break-words'>
-  {"1234 Strawberry Ct."}
-</div>
-<div className='col-span-2 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
-  {"(209)-111-1111"}
+<div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
   <Image 
   onClick={()=> {
     props.setIsEdit(true);
@@ -80,4 +76,4 @@ const StudentTableComponent = (props: {setIsDelete:(input:boolean)=>void, setIsE
   )
 }
 
-export default StudentTableComponent
+export default ManagementTableComponent
