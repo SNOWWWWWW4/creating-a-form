@@ -20,9 +20,13 @@ const useLogin = () => {
   const [createAccSuccess, setCreateAccSuccess] = useState<boolean>(false);
   const [switchBool, setSwitchBool] = useState<boolean>(false);
   const [admin, setAdmin] = useState<boolean>(false);
-  const [changePass, setChangePass] = useState<boolean>(false);
 
   const router = useRouter();
+
+  // Pushing to change password page
+  const changePassword = () => {
+    router.push('/pages/ChangePasswordPage');
+  };
 
   // Making sure the inputs are in the correct format
   const validatingInputs = () => {
@@ -80,7 +84,7 @@ const useLogin = () => {
   };
 
   // Handling Login and Create Account
-  const handleSumit = async () => {
+  const handleSubmit = async () => {
     if (!validatingInputs()) return;
 
     try {
@@ -169,11 +173,10 @@ const useLogin = () => {
     loginSuccess,
     setLoginSuccess,
     emailError,
-    passwordError, 
+    passwordError,
     confirmPasswordError,
-    handleSumit,
-    changePass,
-    setChangePass,
+    handleSubmit,
+    changePassword,
   };
 };
 

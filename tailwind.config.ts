@@ -10,6 +10,8 @@ const config: Config = {
   
     screens: {
 
+      'mini': '420px',
+
       'mobile': '600px',
 
       'sm': '640px',
