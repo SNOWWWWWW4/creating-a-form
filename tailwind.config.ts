@@ -28,6 +28,14 @@ const config: Config = {
 
       '2xl': '1536px',
     },
+    extend: {
+      backgroundImage: {
+        'mainBg': 'url(/formbg.jpg)'
+      },
+      fontFamily: {
+        mainFont : ['mainFont']
+      },
+    }
   },
   plugins: [],
 };

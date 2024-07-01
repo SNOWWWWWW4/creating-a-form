@@ -100,9 +100,9 @@ export default function Home() {
   }, [password]);
 
   return (
-    <main className='min-h-screen grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24 '>
+    <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24 font-mainFont'>
       <section className='flex flex-col justify-center items-center'>
-        <h1>Img goes here</h1>
+        <img className='w-96' src='/moon.png'/>
       </section>
       <section className='flex flex-col justify-center items-center'>
         {switchBool ? (
@@ -268,11 +268,11 @@ export default function Home() {
             </FormControl>
           </div>
         ) : (
-          <div className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
-            <h1>Student Directory</h1>
+          <div className='font-mainFont w-full max-w-lg bg-white shadow-md rounded-2xl p-2 tablet:p-6 space-y-4 border-8 border-purple-200'>
+            <h1 className='text-2xl font-bold'>Student Directory</h1>
             <h4 className='mt-5'>Login</h4>
-            <FormControl>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <FormControl className='grid grid-cols-1'>
+              <div className='grid grid-cols-1 tablet:grid-cols-2 gap-4'>
                 <TextField
                   label='Email'
                   variant='outlined'
@@ -283,6 +283,12 @@ export default function Home() {
                   onKeyDown={handleKeydown}
                   className='col-span-2'
                   required
+                  InputProps={{
+                    className: 'font-mainFont'
+                  }}
+                  InputLabelProps={{
+                    className: 'font-mainFont'
+                  }}
                 />
                 <TextField
                   label='Password'
@@ -301,6 +307,10 @@ export default function Home() {
                         </IconButton>
                       </InputAdornment>
                     ),
+                    className: 'font-mainFont'
+                  }}
+                  InputLabelProps={{
+                    className: 'font-mainFont'
                   }}
                   className='col-span-2'
                   required
