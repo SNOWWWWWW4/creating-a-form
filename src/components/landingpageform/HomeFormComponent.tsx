@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import useAuth from '@/hooks/useAuth';
+import useFormValidation from '@/hooks/useFormValidation';
 import { Check, Visibility, VisibilityOff } from '@mui/icons-material';
 import {
   Alert,
@@ -17,36 +17,31 @@ import CloseIcon from '@mui/icons-material/Close';
 import { green, red } from '@mui/material/colors';
 
 const HomeFormComponent = () => {
+  
   const {
     firstName,
     setFirstName,
-    firstNameError,
     lastName,
     setLastName,
-    lastNameError,
     email,
     setEmail,
-    emailError,
     dob,
     setDob,
-    dobError,
     address,
     setAddress,
-    addressError,
     phone,
     setPhone,
+    firstNameError,
+    lastNameError,
+    emailError,
+    dobError,
+    addressError,
     phoneError,
-    password,
-    setPassword,
-    passwordError,
-    confirmPassword,
-    setConfirmPassword,
-    confirmPasswordError,
+    formSuccessful,
+    setFormSuccessful,
     handleSubmit,
-    passwordStrength,
-    loginSuccess,
-    setLoginSuccess,
-  } = useAuth();
+    resetFields
+  } = useFormValidation()
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
@@ -69,7 +64,7 @@ const HomeFormComponent = () => {
     if (reason === 'clickaway') {
       return;
     }
-    setLoginSuccess(false);
+    setFormSuccessful(false);
   };
 
   const today = new Date().toISOString().split('T')[0];
@@ -163,7 +158,7 @@ const HomeFormComponent = () => {
         </FormControl>
       </div>
       <Snackbar
-        open={loginSuccess}
+        open={formSuccessful}
         autoHideDuration={3500}
         onClose={handleClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}

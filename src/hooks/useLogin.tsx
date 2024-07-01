@@ -118,7 +118,7 @@ const useLogin = () => {
           setLoginSuccess(true);
 
           setTimeout(() => {
-            router.push('/pages/landing');
+            router.push('/pages/LandingPage');
           }, 1000);
         } else {
           setPasswordError('Incorect password');
