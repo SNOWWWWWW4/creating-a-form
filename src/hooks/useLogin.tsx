@@ -1,7 +1,6 @@
 import { ILogin, IToken } from '@/Interfaces/Interfaces';
 import {
   createAccount,
-  getLoggedInUserData,
   login,
 } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
@@ -90,9 +89,11 @@ const useLogin = () => {
     try {
       if (switchBool) {
         const userData: ILogin = {
-          Id: 0,
-          Email: email,
-          Password: password,
+          id: 0,
+          email: email,
+          password: password,
+          // false is placeholder
+          isAdmin: false
         };
 
         await createAccount(userData);
@@ -101,9 +102,10 @@ const useLogin = () => {
         resetFields();
       } else {
         const userData: ILogin = {
-          Id: 0,
-          Email: email,
-          Password: password,
+          id: 0,
+          email: email,
+          password: password,
+          isAdmin: false
         };
 
         // const token: IToken = await login(userData);
