@@ -45,3 +45,15 @@
   min-width: fit-content;
   flex: 1;
 }
+
+@layer components{
+    @font-face{
+        font-family: mainFont;
+        src: url(../assets/Handlee/Handlee-Regular.ttf)
+    }
+  
+  }
+
+  .MuiTextField-root{
+    font-family: url(../assets/Handlee/Handlee-Regular.ttf);
+  }
