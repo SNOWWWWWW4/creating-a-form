@@ -13,6 +13,7 @@ export interface IStudent {
 // For token
 export interface IToken {
   token: string;
+  adminStatus: boolean;
 }
 
 // For login and create account
@@ -20,7 +21,7 @@ export interface ILogin {
   id: number;
   password: string;
   email: string;
-  isAdmin: boolean;
+  adminStatus: boolean;
 }
 /*
   "id": 0,

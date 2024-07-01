@@ -268,7 +268,7 @@ export default function Home() {
             </FormControl>
           </div>
         ) : (
-          <div className='bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
+          <div className=' bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
             <h1>Student Directory</h1>
             <h4 className='mt-5'>Login</h4>
             <FormControl>

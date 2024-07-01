@@ -92,8 +92,7 @@ const useLogin = () => {
           id: 0,
           email: email,
           password: password,
-          // false is placeholder
-          isAdmin: false
+          adminStatus: false
         };
 
         await createAccount(userData);
@@ -105,23 +104,16 @@ const useLogin = () => {
           id: 0,
           email: email,
           password: password,
-          isAdmin: false
+          adminStatus: false
         };
 
-        // const token: IToken = await login(userData);
-        const token = { token: '' }; // placeholder for now
+        const token: IToken = await login(userData);
 
         if (token.token) {
-          // not sure if this will work
 
-          // const loginData = await getLoggedInUserData(email)
-
-          // if(loginData.admin === 'true'){
-          //     setAdmin(true);
-          // }
-          // else{
-          //     setAdmin(false);
-          // }
+          if(token.adminStatus){
+            setAdmin(true);
+          }
 
           setLoginSuccess(true);
 
