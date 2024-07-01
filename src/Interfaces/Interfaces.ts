@@ -1,29 +1,33 @@
-export interface IUsers {
-    Id: number;
-    First: string;
-    Last: string;
-    Email: string;  
-    DoB: string;   
-    Phone: string | null;
-    Address: string | null; 
-    Password: string;
-    SubmitTime: string;
+export interface IStudent {
+  id: number;
+  first: string;
+  last: string;
+  email: string;
+  doB: string;
+  phone: string | null;
+  address: string | null;
+//   Password: string;
+//   SubmitTime: string;
 }
-
 
 // For token
 export interface IToken {
-    token: string;
+  token: string;
 }
 
 // For login and create account
 export interface ILogin {
-    Id: number;
-    Email: string;
-    Password: string;
+  id: number;
+  password: string;
+  email: string;
+  isAdmin: boolean;
 }
-
-
+/*
+  "id": 0,
+  "password": "string",
+  "email": "string",
+  "isAdmin": true
+*/
 
 // For the form
 export interface IFormData {
@@ -35,4 +39,10 @@ export interface IFormData {
   Phone: string | null;
   Address: string | null;
   SubmitTime: string;
+}
+
+export interface INewPassword {
+  email: string;
+  oldPassword: string;
+  newPassword: string;
 }

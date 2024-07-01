@@ -1,4 +1,4 @@
-import { updatePassword } from '@/utils/DataServices';
+import { resetPassword } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
@@ -112,12 +112,12 @@ const useResetPassword = () => {
 
   
   // update password
-  const handleUpdatePassword = async () => {
+  const handleResetPassword = async () => {
     if(!validatingSecondSetOfInputs()) return;
 
     try {
 
-      // await updatePassword(email,  newPassword).then(data =>{
+      // await resetPassword(email,  newPassword).then(data =>{
       //     if(data){
       //       setSuccessfulPasswordReset(true);
       //       setTimeout(() => {
@@ -170,7 +170,7 @@ const useResetPassword = () => {
     newPasswordError,
     confrimNewPasswordError,
     handleContinue,
-    handleUpdatePassword,
+    handleResetPassword,
     resetFields,
     switchBoolTwo,
     setSwitchBoolTwo,

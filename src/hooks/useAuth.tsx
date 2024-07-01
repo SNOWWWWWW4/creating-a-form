@@ -1,4 +1,4 @@
-import { IUsers } from '@/Interfaces/Interfaces';
+import { IStudent } from '@/Interfaces/Interfaces';
 import { createRegirstration } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ const useAuth = () => {
   const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [formData, setFormData] = useState<IUsers>();
+  const [formData, setFormData] = useState<IStudent>();
 
   const [firstNameError, setFirstNameError] = useState<string>('');
   const [lastNameError, setLastNameError] = useState<string>('');
@@ -154,16 +154,16 @@ const useAuth = () => {
       try {
         setLoginSuccess(true);
   
-        const userData : IUsers = {
-          Id: 0,
-          First: firstName,
-          Last: lastName,
-          Email: email,
-          DoB: new Date(dob).toISOString(),
-          Address: address,
-          Phone: phone,
-          Password : password,
-          SubmitTime: new Date().toISOString()
+        const userData : IStudent = {
+          id: 0,
+          first: firstName,
+          last: lastName,
+          email: email,
+          doB: new Date(dob).toISOString(),
+          address: address,
+          phone: phone,
+          // Password : password,
+          // SubmitTime: new Date().toISOString()
         }
   
         const info = await createRegirstration(userData)
