@@ -38,6 +38,8 @@ const StudentDirectoryPage = () => {
 
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
+      {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
+      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
         <h1 className='text-white text-5xl font-mainFont mb-4'>
@@ -109,8 +111,6 @@ const StudentDirectoryPage = () => {
               studentArr && studentArr.map((student: any, idx: number) => {
                 return (
                   <div key={idx}>
-                    {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} handleDelete={handleDelete} studentInfo={student} />}
-                    {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
                     <StudentTableComponent
                       studentInfo={student}
                       setIsDelete={setIsDelete}

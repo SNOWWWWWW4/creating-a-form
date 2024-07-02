@@ -32,13 +32,15 @@ const ManagementTableComponent = (props: {
             src={edit}
             alt='edit icon'
           />
-          <Image
+          {/* <Image
             onClick={() => {
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
             src={deleteIcon}
             alt='remove icon'
+          /> */}
+        </div>
           />
         </div> */}
       </div>
@@ -54,14 +56,14 @@ const ManagementTableComponent = (props: {
             src={edit}
             alt='edit icon'
           />
-          <Image
+          {/* <Image
             onClick={() => {
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
             src={deleteIcon}
             alt='remove icon'
-          />
+          /> */}
         </div>
         <div>{`${!props.userInfo.first && "N/A"}`}</div>
         <div>{`${!props.userInfo.last && "N/A"}`}</div>

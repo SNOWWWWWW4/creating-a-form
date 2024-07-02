@@ -2,11 +2,9 @@ import React from 'react'
 
 type StudentTableProps = {
   setIsDelete: (input: boolean) => void;
-  handleDelete: (email:string) => void;
-  studentInfo: any
 }
 
-const StudentDeleteComponent = ({setIsDelete, handleDelete, studentInfo}: StudentTableProps) => {
+const StudentDeleteComponent = ({setIsDelete}: StudentTableProps) => {
   return (
     <div>
       <div className="fixed inset-0 bg-black bg-opacity-80 z-50"></div>
@@ -25,7 +23,6 @@ const StudentDeleteComponent = ({setIsDelete, handleDelete, studentInfo}: Studen
             <button
             onClick={() => {
                 setIsDelete(true);
-                handleDelete(studentInfo.email);
             }}
               className={ "hover:bg-[#d186f3] ms-[25px] h-[44px] w-[106px] bg-[#CB76F2] rounded-[10px] text-white text-[20px] font-light"} >Delete</button>
           </div>
