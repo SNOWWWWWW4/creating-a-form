@@ -45,39 +45,39 @@ const StudentDirectoryPage = () => {
         </h1>
         <div className='bg-studentDirect min-h-[500px] h-auto rounded-[10px]'>
           <div className='h-20 grid grid-cols-5 text-white font-thin text-[16px] rounded-t-[10px]'>
-            <div
-              onClick={() => {
-                setSortBy(0);
-              }}
-              className={sortBy == 0 ? `bg-studentDirect hover:bg-[#362833] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px] font-semibold` : `bg-[#584153] hover:bg-[#362833] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
+            <div 
+            onClick={() => {
+              setSortBy(0);
+            }}
+            className={sortBy == 0 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
               Default
             </div>
-            <div
-              onClick={() => {
-                setSortBy(1);
-              }}
-              className={sortBy == 1 ? `bg-studentDirect hover:bg-[#362833] cursor-pointer flex items-center justify-center font-semibold` : `bg-[#584153] hover:bg-[#362833] cursor-pointer flex items-center justify-center`}>
+            <div 
+            onClick={() => {
+              setSortBy(1);
+            }}
+            className={sortBy == 1 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
               First Name A-Z
             </div>
-            <div
-              onClick={() => {
-                setSortBy(2);
-              }}
-              className={sortBy == 2 ? `bg-studentDirect hover:bg-[#362833] cursor-pointer flex items-center justify-center font-semibold` : `bg-[#584153] hover:bg-[#362833]  cursor-pointer flex items-center justify-center`}>
+            <div 
+            onClick={() => {
+              setSortBy(2);
+            }}
+            className={sortBy == 2 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f]  cursor-pointer flex items-center justify-center`}>
               First Name Z-A
             </div>
-            <div
-              onClick={() => {
-                setSortBy(3);
-              }}
-              className={sortBy == 3 ? `bg-studentDirect hover:bg-[#362833] cursor-pointer flex items-center justify-center font-semibold` : `bg-[#584153] hover:bg-[#362833] cursor-pointer flex items-center justify-center`}>
+            <div 
+            onClick={() => {
+              setSortBy(3);
+            }}
+            className={sortBy == 3 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
               Last Name A-Z
             </div>
-            <div
-              onClick={() => {
-                setSortBy(4);
-              }}
-              className={sortBy == 4 ? `bg-studentDirect hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px] font-semibold` : `bg-[#584153] hover:bg-[#362833] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
+            <div 
+            onClick={() => {
+              setSortBy(4);
+            }}
+            className={sortBy == 4 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
               Last Name Z-A
             </div>
           </div>
@@ -108,8 +108,6 @@ const StudentDirectoryPage = () => {
             {
               studentArr && studentArr.map((student: any, idx: number) => {
                 return (
-              studentArr && studentArr.map((student: any, idx: number) => {
-                return (
                   <div key={idx}>
                     {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} handleDelete={handleDelete} studentInfo={student} />}
                     {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
@@ -118,23 +116,14 @@ const StudentDirectoryPage = () => {
                       setIsDelete={setIsDelete}
                       setIsEdit={setIsEdit}
                     />
-                      studentInfo={student}
-                      setIsDelete={setIsDelete}
-                      setIsEdit={setIsEdit}
-                    />
                   </div>
-
 
                 )
               }
 
 
-
-
               )
             }
-
-
 
 
           </div>
