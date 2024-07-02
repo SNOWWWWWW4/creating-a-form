@@ -94,6 +94,7 @@ const HomeFormComponent = () => {
               required
             />
             <TextField
+              
               variant='outlined'
               value={dob}
               onChange={(e) => setDob(e.target.value)}
