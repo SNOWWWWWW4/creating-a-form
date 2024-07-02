@@ -104,8 +104,9 @@ function page() {
       <div className='flex flex-col items-center justify-center'>
         {switchBoolTwo ? (
           <div className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
+            <h1 className='text-3xl'>Confirm new password</h1>
             <FormControl>
-              <div className='grid grid-cols-1 gap-4 justify-center'>
+              <div className='grid grid-cols-1 tablet:grid-cols-2 gap-4 justify-center'>
                 <TextField
                   label='Password'
                   variant='outlined'
@@ -125,6 +126,7 @@ function page() {
                       </InputAdornment>
                     ),
                   }}
+                  className='col-span-2'
                   required
                 />
                 <TextField
@@ -145,6 +147,7 @@ function page() {
                       </InputAdornment>
                     ),
                   }}
+                  className='col-span-2'
                   required
                 />
 
@@ -231,7 +234,8 @@ function page() {
             </FormControl>
           </div>
         ) : (
-          <div className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
+          <div className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4 grid justify-center'>
+            <h1 className='text-3xl'>Confirm new password</h1>
             <FormControl>
               <div className='grid grid-cols-1 gap-4 justify-center'>
                 <TextField
