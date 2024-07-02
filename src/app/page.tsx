@@ -366,7 +366,7 @@ export default function Home() {
                     <h1>Reset Password?</h1>
                     <Button
                       variant='text'
-                      className='mini:ml-auto font-mainFont'
+                      className='mini:ml-auto underline font-mainFont'
                       onClick={changePassword}
                     >
                       Change

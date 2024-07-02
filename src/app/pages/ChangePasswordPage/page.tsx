@@ -5,12 +5,12 @@ import ChangePassForm from '@/components/form/ChangePassForm';
 const ChangePasswordPage = () => {
 
   return (
-    <div className='min-h-screen grid grid-cols-1 computer:grid-cols-2'>
+    <div className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2'>
       
       <ChangePassForm />
 
       <div className='flex flex-col justify-center items-center'>
-        <h1>Hello there</h1>
+        <img className='w-96' src='/moon3.png'/>
       </div>
     </div>
   );
