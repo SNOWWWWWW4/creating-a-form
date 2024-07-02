@@ -10,7 +10,7 @@ const ManagementTableComponent = (props: {
 }) => {
   return (
     <div>
-      <div className='hidden lg:grid grid-cols-5 border-y-[#ddc7cb] border-y-[1px]'>
+      <div className='hidden lg:grid grid-cols-4 border-y-[#ddc7cb] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#ddc7cb] border-r-[1px] flex items-center break-all'>
           {`${!props.userInfo.first && "N/A"}`}
         </div>
@@ -23,7 +23,7 @@ const ManagementTableComponent = (props: {
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
         {`${props.userInfo.email}`}
         </div>
-        <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
+        {/* <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
           <Image
             onClick={() => {
               props.setIsEdit(true);
@@ -40,7 +40,7 @@ const ManagementTableComponent = (props: {
             src={deleteIcon}
             alt='remove icon'
           />
-        </div>
+        </div> */}
       </div>
 
       <div className='bg-[#ddc7cb] lg:hidden text-center'>

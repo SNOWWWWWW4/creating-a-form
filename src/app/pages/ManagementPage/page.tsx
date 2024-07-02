@@ -12,15 +12,61 @@ const ManagementPage = () => {
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [userArr, setUserArr] = useState<any>();
+  const [sortBy, setSortBy] = useState<number>(0);
 
   useEffect(() => {
     const getUser = async() => {
-      let usersArr = await getAllUsers();
-      setUserArr(usersArr);
-      console.log(usersArr);
+      const usersArr = await getAllUsers();
+      if(sortBy == 0){
+        setUserArr(usersArr);
+      }else if(sortBy == 1){
+        let firstAZ = usersArr.sort((a,b) => {
+          if(a.first<b.first){
+              return -1;
+          }
+          if(a.first>b.first){
+              return 1;
+          }
+          return 0;
+      })
+        setUserArr(firstAZ);
+      }else if(sortBy == 2){
+        let firstZA = usersArr.sort((a,b) => {
+          if(a.first>b.first){
+              return -1;
+          }
+          if(a.first<b.first){
+              return 1;
+          }
+          return 0;
+      })
+      setUserArr(firstZA);
+      }else if(sortBy == 3){
+        let lastAZ = usersArr.sort((a,b) => {
+          if(a.last<b.last){
+              return -1;
+          }
+          if(a.last>b.last){
+              return 1;
+          }
+          return 0;
+      })
+      setUserArr(lastAZ);
+      }else if(sortBy == 4){
+        let lastZA = usersArr.sort((a,b) => {
+          if(a.last>b.last){
+              return -1;
+          }
+          if(a.last<b.last){
+              return 1;
+          }
+          return 0;
+      })
+      setUserArr(lastZA);
+      }
     }
     getUser();
-  }, [])
+  }, [sortBy])
 
   return (
     <div className='bg-gradient-to-r from-[#d9818f] to-[#bf8764] h-screen'>
@@ -34,25 +80,45 @@ const ManagementPage = () => {
           </h1>
           <div className='bg-[#ECD8D1] min-h-[500px] h-auto rounded-[10px]'>
             <div className='bg-[#533f41] h-20 grid grid-cols-5 text-white font-thin text-[16px] rounded-t-[10px]'>
-              <div className='hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center'>
+              <div 
+              onClick={() => {
+                setSortBy(0);
+              }}
+              className='hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center'>
                 Default
               </div>
-              <div className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
+              <div 
+              onClick={() => {
+                setSortBy(1);
+              }}
+              className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
                 First Name A-Z
               </div>
-              <div className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
+              <div 
+              onClick={() => {
+                setSortBy(2);
+              }}
+              className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
                 First Name Z-A
               </div>
-              <div className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
+              <div 
+              onClick={() => {
+                setSortBy(3);
+              }}
+              className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
                 Last Name A-Z
               </div>
-              <div className='hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center'>
+              <div 
+              onClick={() => {
+                setSortBy(4);
+              }}
+              className='hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center'>
                 Last Name Z-A
               </div>
             </div>
             <div className='bg-[#ddc7cb] h-[40px] mt-6 mx-4 hidden lg:grid font-medium rounded-t-[10px]'>
               {/* hidden lg:grid grid-cols-7 border-y-[#ddc7cb] border-y-[1px] */}
-              <div className='lg:grid grid-cols-5'>
+              <div className='lg:grid grid-cols-4'>
                 <div className='col-span-1 flex px-1.5 items-center truncate'>
                   First Name
                 </div>
@@ -65,7 +131,6 @@ const ManagementPage = () => {
                 <div className='col-span-1 flex px-1.5 items-center truncate'>
                   Email
                 </div>
-                <div className='col-span-1 flex px-1.5 items-center truncate'></div>
               </div>
             </div>
             <div className='border-[#ddc7cb] lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
