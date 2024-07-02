@@ -50,14 +50,14 @@ const NavBarComponent = () => {
             >
               Student Directory
             </div>
-            <div
+            {isAdmin && <div
               onClick={() => {
                 router.push('/pages/ManagementPage');
               }}
               className='font-thin hover:bg-[#b2b2b2] cursor-pointer h-16 border-y-[#786e6e] border-x-[#786e6e] border-y-[0.15px] flex items-center justify-center px-3'
             >
               User Management
-            </div>
+            </div>}
             <Button
               onClick={handleLogout}
               variant='contained'
@@ -89,13 +89,13 @@ const NavBarComponent = () => {
             className='font-thin hover:bg-[#b2b2b2] cursor-pointer h-16 border-y-[#786e6e] border-x-[#786e6e] flex items-center justify-center px-3'>
             Student Directory
           </div>
-          <div
+          {isAdmin && <div
             onClick={() => {
               router.push('/pages/ManagementPage');
             }}
             className='font-thin hover:bg-[#b2b2b2] cursor-pointer h-16 border-y-[#786e6e] border-x-[#786e6e] border-y-[0.15px] flex items-center justify-center px-3'>
             User Management
-          </div>
+          </div>}
         </div>
         <Button
               onClick={handleLogout}

@@ -1,6 +1,12 @@
 import React from 'react'
 
-const StudentDeleteComponent = (props: {setIsDelete:(input:boolean)=>void}) => {
+type StudentTableProps = {
+  setIsDelete: (input: boolean) => void;
+  handleDelete: (email:string) => void;
+  studentInfo: any
+}
+
+const StudentDeleteComponent = ({setIsDelete, handleDelete, studentInfo}: StudentTableProps) => {
   return (
     <div>
       <div className="fixed inset-0 bg-black bg-opacity-80 z-50"></div>
@@ -13,14 +19,15 @@ const StudentDeleteComponent = (props: {setIsDelete:(input:boolean)=>void}) => {
           <div className="mt-[50px] flex justify-end">
             <button
             onClick={() => {
-                props.setIsDelete(false);
+                setIsDelete(false);
             }}
               className="h-[44px] w-[106px] bg-[#5C5C5C] hover:bg-[#7b7b7b] rounded-[10px] text-white text-[20px] font-light">Cancel</button>
             <button
             onClick={() => {
-                props.setIsDelete(false);
+                setIsDelete(true);
+                handleDelete(studentInfo.email);
             }}
-              className={ "hover:bg-[#d186f3] ms-[25px] h-[44px] w-[106px] bg-[#CB76F2] rounded-[10px] text-white text-[20px] font-light"} >Create</button>
+              className={ "hover:bg-[#d186f3] ms-[25px] h-[44px] w-[106px] bg-[#CB76F2] rounded-[10px] text-white text-[20px] font-light"} >Delete</button>
           </div>
 
         </div>
