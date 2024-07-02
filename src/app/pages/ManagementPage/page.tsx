@@ -6,7 +6,7 @@ import ManagementTableComponent from '@/components/Student/ManagementTableCompon
 
 import React, { useEffect, useState } from 'react';
 import ManagementEditComponent from '@/components/Student/ManagementEditComponent';
-import { getAllUsers } from '@/utils/DataServices';
+import { getAllStudents, getAllUsers, removeStudent } from '@/utils/DataServices';
 
 const ManagementPage = () => {
   const [isDelete, setIsDelete] = useState<boolean>(false);
@@ -14,7 +14,7 @@ const ManagementPage = () => {
   const [userArr, setUserArr] = useState<any>();
 
   useEffect(() => {
-    const getUser = async() => {
+    const getUser = async () => {
       let usersArr = await getAllUsers();
       setUserArr(usersArr);
       console.log(usersArr);
@@ -25,7 +25,7 @@ const ManagementPage = () => {
   return (
     <div className='bg-gradient-to-r from-[#d9818f] to-[#bf8764] h-screen'>
       <NavBarComponent />
-      {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
+      {/* {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} handleDelete={} />} */}
       {isEdit && <ManagementEditComponent setIsEdit={setIsEdit} />}
       <div>
         <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
@@ -69,23 +69,23 @@ const ManagementPage = () => {
               </div>
             </div>
             <div className='border-[#ddc7cb] lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
-            {
-              userArr && userArr.map((user:any,idx:number) => {
-                return(
-                  <div key={idx}>
-                    <ManagementTableComponent
-                    userInfo={user}
-              setIsDelete={setIsDelete}
-              setIsEdit={setIsEdit}
-              />
-                  </div>
-                  
+              {
+                userArr && userArr.map((user: any, idx: number) => {
+                  return (
+                    <div key={idx}>
+                      <ManagementTableComponent
+                        userInfo={user}
+                        setIsDelete={setIsDelete}
+                        setIsEdit={setIsEdit}
+                      />
+                    </div>
+
+                  )
+                }
+
+
                 )
               }
-                
-              
-              )
-            }
             </div>
           </div>
         </div>

@@ -38,6 +38,8 @@ const StudentDirectoryPage = () => {
 
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
+      {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
+      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
         <h1 className='text-white text-5xl font-mainFont mb-4'>
@@ -45,39 +47,39 @@ const StudentDirectoryPage = () => {
         </h1>
         <div className='bg-studentDirect min-h-[500px] h-auto rounded-[10px]'>
           <div className='h-20 grid grid-cols-5 text-white font-thin text-[16px] rounded-t-[10px]'>
-            <div 
-            onClick={() => {
-              setSortBy(0);
-            }}
-            className={sortBy == 0 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
+            <div
+              onClick={() => {
+                setSortBy(0);
+              }}
+              className={sortBy == 0 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
               Default
             </div>
-            <div 
-            onClick={() => {
-              setSortBy(1);
-            }}
-            className={sortBy == 1 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
+            <div
+              onClick={() => {
+                setSortBy(1);
+              }}
+              className={sortBy == 1 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
               First Name A-Z
             </div>
-            <div 
-            onClick={() => {
-              setSortBy(2);
-            }}
-            className={sortBy == 2 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f]  cursor-pointer flex items-center justify-center`}>
+            <div
+              onClick={() => {
+                setSortBy(2);
+              }}
+              className={sortBy == 2 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f]  cursor-pointer flex items-center justify-center`}>
               First Name Z-A
             </div>
-            <div 
-            onClick={() => {
-              setSortBy(3);
-            }}
-            className={sortBy == 3 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
+            <div
+              onClick={() => {
+                setSortBy(3);
+              }}
+              className={sortBy == 3 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
               Last Name A-Z
             </div>
-            <div 
-            onClick={() => {
-              setSortBy(4);
-            }}
-            className={sortBy == 4 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
+            <div
+              onClick={() => {
+                setSortBy(4);
+              }}
+              className={sortBy == 4 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
               Last Name Z-A
             </div>
           </div>
@@ -109,8 +111,6 @@ const StudentDirectoryPage = () => {
               studentArr && studentArr.map((student: any, idx: number) => {
                 return (
                   <div key={idx}>
-                    {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} handleDelete={handleDelete} studentInfo={student} />}
-                    {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
                     <StudentTableComponent
                       studentInfo={student}
                       setIsDelete={setIsDelete}
