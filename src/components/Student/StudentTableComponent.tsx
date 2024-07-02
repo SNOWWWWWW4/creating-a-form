@@ -35,7 +35,7 @@ const StudentTableComponent = (props: {
         {`${props.studentInfo.last}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
-          {`${props.studentInfo.doB}`}
+          {`${props.studentInfo.doB.split("T")[0]}`}
         </div>
         <div className='col-span-2 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
         {`${props.studentInfo.email}`}
@@ -91,7 +91,7 @@ const StudentTableComponent = (props: {
         </div>
         <div>{`First Name: ${props.studentInfo.first}`}</div>
         <div>{`Last Name: ${props.studentInfo.last}`}</div>
-        <div>{`Birthday: ${props.studentInfo.doB}`}</div>
+        <div>{`Birthday: ${props.studentInfo.doB.split("T")[0]}`}</div>
         <div>{`Email: ${props.studentInfo.email}`}</div>
         <div>{`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}</div>
         <div>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>

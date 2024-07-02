@@ -8,6 +8,8 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material';
+import { updateStudent } from '@/utils/DataServices';
+import { IStudent } from '@/Interfaces/Interfaces';
 
 const StudentEditsComponent = (props: {
   setIsEdit: (input: boolean) => void;
@@ -37,9 +39,24 @@ const StudentEditsComponent = (props: {
   } = useFormValidation();
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleSubmit();
+    if (e.key === 'Enter') {
+      handleUpdateData();
+    };
   };
 
+  const handleUpdateData = () => {
+    const updatedData: IStudent = {
+      id: 0,
+      first: firstName,
+      last: lastName,
+      email: email,
+      doB: dob,
+      address: address,
+      phone: phone,
+    }
+
+    updateStudent(updatedData);
+  }
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -144,8 +161,7 @@ const StudentEditsComponent = (props: {
                 </Button>
                 <Button
                   onClick={() => {
-                    handleSubmit();
-
+                    handleUpdateData();
                     props.setIsEdit(false);
                   }}
                   variant='contained'
