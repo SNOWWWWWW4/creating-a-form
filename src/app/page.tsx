@@ -15,9 +15,10 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { green, red } from '@mui/material/colors';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  
+
   const {
     email,
     setEmail,
@@ -35,6 +36,7 @@ export default function Home() {
     emailError,
     passwordError,
     handleSubmit,
+    handleAdmin,
     changePassword
   } = useLogin();
 
@@ -47,6 +49,7 @@ export default function Home() {
   const handleEyeClick = () => setVisible(!visible);
   const handleEyeClickTwo = () => setVisibleTwo(!visibleTwo);
 
+  const router = useRouter();
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
@@ -98,16 +101,17 @@ export default function Home() {
     }
   }, [password]);
 
+
   return (
-    <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24 font-mainFont'>
+    <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24'>
       <section className='flex flex-col justify-center items-center'>
-        <img className='w-96' src='/moon.png'/>
+        <img className='w-96' src='/moon.png' />
       </section>
       <section className='flex flex-col justify-center items-center'>
         {switchBool ? (
-          <div className='w-full max-w-lg bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
-            <h1>Student Directory</h1>
-            <h4 className='mt-5'>Create an Account</h4>
+          <div className='w-full max-w-lg border-8 border-purple-200 bg-white shadow-md rounded-lg p-2 tablet:p-6 space-y-4'>
+            <h1 className='font-mainFont font-bold text-2xl'>Student Directory</h1>
+            <h4 className='mt-5 font-mainFont'>Create an Account</h4>
             <FormControl>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <TextField
@@ -120,6 +124,12 @@ export default function Home() {
                   onKeyDown={handleKeydown}
                   className='col-span-2'
                   required
+                  InputProps={{
+                    className: 'font-mainFont'
+                  }}
+                  InputLabelProps={{
+                    className: 'font-mainFont'
+                  }}
                 />
                 <TextField
                   label='Password'
@@ -138,6 +148,10 @@ export default function Home() {
                         </IconButton>
                       </InputAdornment>
                     ),
+                    className: 'font-mainFont'
+                  }}
+                  InputLabelProps={{
+                    className: 'font-mainFont'
                   }}
                   className='col-span-2 md:col-span-1'
                   required
@@ -159,6 +173,10 @@ export default function Home() {
                         </IconButton>
                       </InputAdornment>
                     ),
+                    className: 'font-mainFont'
+                  }}
+                  InputLabelProps={{
+                    className: 'font-mainFont'
                   }}
                   className='col-span-2 md:col-span-1'
                   required
@@ -166,7 +184,7 @@ export default function Home() {
 
                 {/* password requirements */}
                 <div className='col-span-2'>
-                  <Typography variant='body1' className='font-medium mb-2'>
+                  <Typography variant='body1' className='font-medium font-mainFont mb-2'>
                     Password Requirements
                   </Typography>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
@@ -180,11 +198,10 @@ export default function Home() {
                         sx={{ color: green[500] }}
                       />
                       <p
-                        className={`${
-                          password.length > 14
+                        className={`${password.length > 14
                             ? 'text-green-600'
                             : 'text-red-600'
-                        } text-xs my-auto`}
+                          } text-xs my-auto`}
                       >
                         15 or more Characters long
                       </p>
@@ -199,9 +216,8 @@ export default function Home() {
                         sx={{ color: green[500] }}
                       />
                       <p
-                        className={`${
-                          cap ? 'text-green-600' : 'text-red-600'
-                        } text-xs my-auto`}
+                        className={`${cap ? 'text-green-600' : 'text-red-600'
+                          } text-xs my-auto`}
                       >
                         Contains an uppercase letter
                       </p>
@@ -216,9 +232,8 @@ export default function Home() {
                         sx={{ color: green[500] }}
                       />
                       <p
-                        className={`${
-                          num ? 'text-green-600' : 'text-red-600'
-                        } text-xs my-auto`}
+                        className={`${num ? 'text-green-600' : 'text-red-600'
+                          } text-xs my-auto`}
                       >
                         Contains a number
                       </p>
@@ -233,9 +248,8 @@ export default function Home() {
                         sx={{ color: green[500] }}
                       />
                       <p
-                        className={`${
-                          spec ? 'text-green-600' : 'text-red-600'
-                        } text-xs my-auto`}
+                        className={`${spec ? 'text-green-600' : 'text-red-600'
+                          } text-xs my-auto`}
                       >
                         Includes one of the following special characters:
                         !@#$%^&*
@@ -247,22 +261,22 @@ export default function Home() {
                   onClick={handleSubmit}
                   variant='contained'
                   size='large'
-                  className='col-span-2 justify-center'
+                  className='col-span-2 font-mainFont justify-center'
                 >
                   Submit
                 </Button>
 
-                <div className='mt-10 flex-group col-span-2'>
-                  <h1>Already have an account?</h1>
-                  <Button
-                    variant='text'
-                    color='primary'
-                    className='underline  mini:ml-auto'
-                    onClick={() => {setSwitchBool(false); setVisible(false); setVisibleTwo(false);}}
-                  >
-                    Sign in
-                  </Button>
-                </div>
+                <h1 className='font-mainFont'>Already have an account?</h1>
+
+                <Button
+                  variant='text'
+                  color='primary'
+                  className='underline font-mainFont mini:ml-auto'
+                  onClick={() => setSwitchBool(false)}
+                >
+                  Sign in
+                </Button>
+
               </div>
             </FormControl>
           </div>
@@ -319,7 +333,7 @@ export default function Home() {
                   onClick={handleSubmit}
                   variant='contained'
                   size='large'
-                  className='col-span-2 justify-center'
+                  className='col-span-2 font-mainFont justify-center'
                 >
                   Login
                 </Button>
@@ -336,7 +350,8 @@ export default function Home() {
                 <Button
                   variant='outlined'
                   color='secondary'
-                  className='col-span-2'
+                  className='col-span-2 font-mainFont'
+                  onClick={()=> {handleAdmin()}}
                 >
                   Admin
                 </Button>
@@ -346,8 +361,8 @@ export default function Home() {
                     <Button
                       variant='text'
                       color='info'
-                      className='underline mini:ml-auto'
-                      onClick={() => {setSwitchBool(true); setVisible(false); setVisibleTwo(false);}}
+                      className='underline font-mainFont mini:ml-auto'
+                      onClick={() => setSwitchBool(true)}
                     >
                       Create an Account
                     </Button>
@@ -356,7 +371,7 @@ export default function Home() {
                     <h1>Reset Password?</h1>
                     <Button
                       variant='text'
-                      className='mini:ml-auto'
+                      className='mini:ml-auto underline font-mainFont'
                       onClick={changePassword}
                     >
                       Change
@@ -380,6 +395,7 @@ export default function Home() {
           severity='success'
           variant='filled'
           sx={{ width: '100%' }}
+          className='font-mainFont'
         >
           Welcome! Loading next page...
         </Alert>
@@ -396,6 +412,7 @@ export default function Home() {
           severity='success'
           variant='filled'
           sx={{ width: '100%' }}
+          className='font-mainFont'
         >
           Account successfully created!
         </Alert>
