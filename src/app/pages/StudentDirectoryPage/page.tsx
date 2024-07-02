@@ -6,11 +6,12 @@ import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent'
 
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import React, { useEffect, useState } from 'react';
-import { getAllStudents } from '@/utils/DataServices';
+import { getAllStudents, removeStudent } from '@/utils/DataServices';
+import { IStudent } from '@/Interfaces/Interfaces';
 
 const StudentDirectoryPage = () => {
 
-  const [studentArr, setStudentArr] = useState<any>();
+  const [studentArr, setStudentArr] = useState<IStudent[]>([]);
   const [sortBy, setSortBy] = useState<number>(0);
 
   useEffect(() => {
@@ -24,6 +25,13 @@ const StudentDirectoryPage = () => {
     getStudent();
   }, [sortBy])
 
+  const handleDelete = async (email: string) => {
+    await removeStudent(email);
+
+    const updatedStudents = await getAllStudents();
+    setStudentArr(updatedStudents);
+  };
+
 
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -31,8 +39,6 @@ const StudentDirectoryPage = () => {
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
       <NavBarComponent />
-      {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
-      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
         <h1 className='text-white text-5xl font-mainFont mb-4'>
           Student Directory
@@ -102,20 +108,33 @@ const StudentDirectoryPage = () => {
             {
               studentArr && studentArr.map((student: any, idx: number) => {
                 return (
+              studentArr && studentArr.map((student: any, idx: number) => {
+                return (
                   <div key={idx}>
+                    {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} handleDelete={handleDelete} studentInfo={student} />}
+                    {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
                     <StudentTableComponent
+                      studentInfo={student}
+                      setIsDelete={setIsDelete}
+                      setIsEdit={setIsEdit}
+                    />
                       studentInfo={student}
                       setIsDelete={setIsDelete}
                       setIsEdit={setIsEdit}
                     />
                   </div>
 
+
                 )
               }
 
 
+
+
               )
             }
+
+
 
 
           </div>
