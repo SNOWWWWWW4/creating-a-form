@@ -30,11 +30,15 @@ const config: Config = {
     },
     extend: {
       backgroundImage: {
-        'mainBg': 'url(/formbg.jpg)'
+        'mainBg': 'url(/formbg.jpg)',
+        'studentBg' : 'url(/night4.jpg)'
       },
       fontFamily: {
         mainFont : ['mainFont']
       },
+      colors: {
+        'studentDirect': 'rgba(218,189,212, 0.8)'
+      }
     }
   },
   plugins: [],

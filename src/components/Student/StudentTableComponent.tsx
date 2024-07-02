@@ -9,25 +9,27 @@ const StudentTableComponent = (props: {
   setIsEdit: (input: boolean) => void;
   studentInfo:any
 }) => {
+
+  
   return (
     <div>
-      <div className='hidden lg:grid grid-cols-8 border-y-[#ddc7cb] border-y-[1px]'>
-        <div className='col-span-1 px-1 border-r-[#ddc7cb] border-r-[1px] flex items-center break-all'>
+      <div className='hidden lg:grid grid-cols-8 border-y-[#83677e] border-y-[1px]'>
+        <div className='col-span-1 px-1 border-r-[#83677e] border-r-[1px] flex items-center break-all'>
           {`${props.studentInfo.first}`}
         </div>
-        <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
+        <div className='col-span-1 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
         {`${props.studentInfo.last}`}
         </div>
-        <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
+        <div className='col-span-1 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
           {`${props.studentInfo.doB}`}
         </div>
-        <div className='col-span-2 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
+        <div className='col-span-2 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
         {`${props.studentInfo.email}`}
         </div>
-        <div className='col-span-1 px-1 border-l-[#ddc7cb] border-l-[1px] flex items-center break-words'>
+        <div className='col-span-1 px-1 border-l-[#83677e] border-l-[1px] flex items-center break-words'>
         {`${props.studentInfo.address == "" && "N/A"}`}
         </div>
-        <div className='col-span-2 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
+        <div className='col-span-2 px-1 border-x-[#83677e] border-x-[1px] flex items-center justify-between break-all'>
         {`${props.studentInfo.phone == "" && "N/A"}`}
           <Image
             onClick={() => {
