@@ -1,9 +1,9 @@
 'use client';
 
-import StudentDeleteComponent from '@/components/student/StudentDeleteComponent';
+import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent';
 import NavBarComponent from '@/components/navbar/NavBarComponent';
-import ManagementTableComponent from '@/components/student/ManagementTableComponent';
-import StudentEditsComponent from '@/components/student/StudentEditsComponent';
+import ManagementTableComponent from '@/components/Student/ManagementTableComponent';
+import StudentEditsComponent from '@/components/Student/StudentEditsComponent';
 
 import React, { useState } from 'react';
 
