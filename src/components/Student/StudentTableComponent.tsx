@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import edit from '@/assets/EditIcon.png';
 import deleteIcon from '@/assets/TrashIcon.png';
 import Image from 'next/image';
+import StudentDeleteComponent from './StudentDeleteComponent';
+import { IStudent } from '@/Interfaces/Interfaces';
 
 
 const StudentTableComponent = (props: {
+  isDelete: boolean;
   setIsDelete: (input: boolean) => void;
   setIsEdit: (input: boolean) => void;
-  studentInfo:any
+  handleDelete: (input: string) => void;
+  studentInfo: IStudent
 }) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -17,8 +21,12 @@ const StudentTableComponent = (props: {
     setIsAdmin(true);
   }
 }, []);
+
+  const [emailToDelete, setEmailToDelete] = useState<string>();
+
   return (
     <div>
+      {props.isDelete && emailToDelete && <StudentDeleteComponent setIsDelete={props.setIsDelete} handleDelete={props.handleDelete} emailToDelete={emailToDelete} />}
       <div className='hidden lg:grid grid-cols-8 border-y-[#83677e] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#83677e] border-r-[1px] flex items-center break-all'>
           {`${props.studentInfo.first}`}
@@ -47,6 +55,7 @@ const StudentTableComponent = (props: {
           />}
           {isAdmin && <Image
             onClick={() => {
+              setEmailToDelete(props.studentInfo.email);
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -69,6 +78,7 @@ const StudentTableComponent = (props: {
           />}
           {isAdmin && <Image
             onClick={() => {
+              setEmailToDelete(props.studentInfo.email);
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
