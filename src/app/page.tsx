@@ -116,6 +116,7 @@ export default function Home() {
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <TextField
                   label='Email'
+                  color='secondary'
                   variant='outlined'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -133,6 +134,7 @@ export default function Home() {
                 />
                 <TextField
                   label='Password'
+                  color='secondary'
                   variant='outlined'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -158,6 +160,7 @@ export default function Home() {
                 />
                 <TextField
                   label='Confirm Password'
+                  color='secondary'
                   variant='outlined'
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -288,6 +291,7 @@ export default function Home() {
               <div className='grid grid-cols-1 tablet:grid-cols-2 gap-4'>
                 <TextField
                   label='Email'
+                  color='secondary'
                   variant='outlined'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -305,6 +309,7 @@ export default function Home() {
                 />
                 <TextField
                   label='Password'
+                  color='secondary'
                   variant='outlined'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -333,7 +338,7 @@ export default function Home() {
                   onClick={handleSubmit}
                   variant='contained'
                   size='large'
-                  className='col-span-2 font-mainFont justify-center'
+                  className='col-span-2 font-mainFont font-bold justify-center bg-fuchsia-400 hover:bg-fuchsia-800'
                 >
                   Login
                 </Button>
@@ -350,7 +355,7 @@ export default function Home() {
                 <Button
                   variant='outlined'
                   color='secondary'
-                  className='col-span-2 font-mainFont'
+                  className='col-span-2 font-mainFont font-bold'
                   onClick={()=> {handleAdmin()}}
                 >
                   Admin
@@ -361,7 +366,7 @@ export default function Home() {
                     <Button
                       variant='text'
                       color='info'
-                      className='underline font-mainFont mini:ml-auto'
+                      className='underline font-mainFont mini:ml-auto font-bold text-blue-800 hover:text-sky-600'
                       onClick={() => setSwitchBool(true)}
                     >
                       Create an Account
@@ -371,10 +376,10 @@ export default function Home() {
                     <h1>Reset Password?</h1>
                     <Button
                       variant='text'
-                      className='mini:ml-auto underline font-mainFont'
+                      className='mini:ml-auto underline font-mainFont font-bold text-blue-800 hover:text-sky-600'
                       onClick={changePassword}
                     >
-                      Change
+                      Change Password
                     </Button>
                   </div>
                 </div>
