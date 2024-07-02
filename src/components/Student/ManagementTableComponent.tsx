@@ -23,26 +23,7 @@ const ManagementTableComponent = (props: {
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
         {`${props.userInfo.email}`}
         </div>
-        {/* <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
-          <Image
-            onClick={() => {
-              props.setIsEdit(true);
-            }}
-            className='h-[25px] w-[25px] cursor-pointer'
-            src={edit}
-            alt='edit icon'
-          />
-          {/* <Image
-            onClick={() => {
-              props.setIsDelete(true);
-            }}
-            className='h-[25px] w-[25px] cursor-pointer'
-            src={deleteIcon}
-            alt='remove icon'
-          /> */}
-        </div>
-          />
-        </div> */}
+
       </div>
 
       <div className='bg-[#ddc7cb] lg:hidden text-center'>
