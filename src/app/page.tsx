@@ -264,7 +264,7 @@ export default function Home() {
                   onClick={handleSubmit}
                   variant='contained'
                   size='large'
-                  className='col-span-2 font-mainFont justify-center'
+                  className='col-span-2 font-mainFont font-bold justify-center bg-fuchsia-400 hover:bg-fuchsia-800'
                 >
                   Submit
                 </Button>
@@ -274,7 +274,7 @@ export default function Home() {
                 <Button
                   variant='text'
                   color='primary'
-                  className='underline font-mainFont mini:ml-auto'
+                  className='underline font-mainFont mini:ml-auto font-bold text-blue-800 hover:text-sky-600'
                   onClick={() => setSwitchBool(false)}
                 >
                   Sign in
