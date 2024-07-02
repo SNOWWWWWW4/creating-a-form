@@ -63,21 +63,21 @@ const ManagementPage = () => {
               onClick={() => {
                 setSortBy(0);
               }}
-              className='bg-[#53404f] hover:bg-[#30252d] rounded-tl-[10px] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center'>
+              className={sortBy == 0 ? `bg-studentDirect hover:bg-[#30252d] text-black hover:text-white hover:rounded-tl-[10px] cursor-pointer flex  items-center justify-center rounded-tl-[10px] font-bold` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
                 Default
               </div>
               <div 
               onClick={() => {
                 setSortBy(1);
               }}
-              className='bg-[#53404f] hover:bg-[#30252d]  cursor-pointer flex items-center justify-center'>
+              className={sortBy == 1 ? `bg-studentDirect hover:bg-[#30252d] text-black hover:text-white cursor-pointer flex items-center justify-center font-bold` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
                A-Z
               </div>
               <div 
               onClick={() => {
                 setSortBy(2);
               }}
-              className='bg-[#53404f] hover:bg-[#30252d] rounded-tr-[10px] cursor-pointer flex items-center justify-center hover:rounded-tr-[10px]'>
+              className={sortBy == 2 ? `bg-studentDirect hover:bg-[#30252d] text-black hover:text-white cursor-pointer flex items-center justify-center font-bold rounded-tr-[10px]` : `bg-[#53404f] hover:bg-[#30252d]  cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
                 Z-A
               </div>
             </div>
