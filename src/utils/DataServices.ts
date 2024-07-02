@@ -2,23 +2,18 @@ import { ILogin, INewPassword, IStudent } from "@/Interfaces/Interfaces";
 
 const url = "https://codestackform.azurewebsites.net";
 
-//// **** Login ****
-export const login = async (loginUser: ILogin) => {
-  const res = await fetch(url + `/Login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: loginUser.email,
-      password: loginUser.password,
-    }),
-  });
-  
-  if (!res.ok) {
-    throw new Error(`Failed to login\nError status: ${res.status}`);
-  }
-  return await res.json();
+// **** Getting all users ****
+export const getAllUsers = async () => {
+  const res = await fetch(url + "/GetUsers");
+  const data: IStudent[] = await res.json();
+  return data;
+};
+
+// **** Getting all students ****
+export const getAllStudents = async () => {
+  const res = await fetch(url + "/GetStudents");
+  const data: IStudent[] = await res.json();
+  return data;
 };
 
 // **** Create account ****
@@ -54,6 +49,25 @@ export const resetPassword = async ( newPassword: INewPassword ): Promise<boolea
   return res.ok;
 };
 
+//// **** Login ****
+export const login = async (loginUser: ILogin) => {
+  const res = await fetch(url + `/Login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: loginUser.email,
+      password: loginUser.password,
+    }),
+  });
+  
+  if (!res.ok) {
+    throw new Error(`Failed to login\nError status: ${res.status}`);
+  }
+  return await res.json();
+};
+
 // ***** Submit Form ****
 export const createRegirstration = async (data: IStudent) => {
   const res = await fetch(url + "/SubmitForm", {
@@ -72,23 +86,9 @@ export const createRegirstration = async (data: IStudent) => {
   // return dt;
 };
 
-// **** Getting all users ****
-export const getAllUsers = async () => {
-  const res = await fetch(url + "/GetUsers");
-  const data: IStudent[] = await res.json();
-  return data;
-};
-
-// **** Getting all students ****
-export const getAllStudents = async () => {
-  const res = await fetch(url + "/GetStudents");
-  const data: IStudent[] = await res.json();
-  return data;
-};
-
 // ***** Update Student ****
-export const updateStudent = async (newData: IStudent) => {
-  const res = await fetch(url + `/UpdateStudent/${newData.email}`, {
+export const updateStudent = async (newData: IStudent, ogEmail: string) => {
+  const res = await fetch(url + `/UpdateStudent/${ogEmail}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

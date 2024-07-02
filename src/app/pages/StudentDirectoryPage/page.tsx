@@ -32,14 +32,28 @@ const StudentDirectoryPage = () => {
     setStudentArr(updatedStudents);
   };
 
+  const studentDefault = {
+    id: 0,
+    first: '',
+    last: '',
+    email: '',
+    doB: '',
+    phone: null,
+    address: null,
+  }
+
 
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [currentStudent, setCurrentStudent] = useState<IStudent>(studentDefault);
 
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
       {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
-      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
+      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} 
+      currentStudent={currentStudent}
+      // setCurrentStudent={setCurrentStudent} 
+      />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
         <h1 className='text-white text-5xl font-mainFont mb-4'>
@@ -115,6 +129,7 @@ const StudentDirectoryPage = () => {
                       studentInfo={student}
                       setIsDelete={setIsDelete}
                       setIsEdit={setIsEdit}
+                      setCurrentStudent={setCurrentStudent}
                     />
                   </div>
 

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import edit from '@/assets/EditIcon.png';
 import deleteIcon from '@/assets/TrashIcon.png';
 import Image from 'next/image';
+import { IStudent } from '@/Interfaces/Interfaces';
 
 
 const StudentTableComponent = (props: {
   setIsDelete: (input: boolean) => void;
   setIsEdit: (input: boolean) => void;
-  studentInfo:any
+  studentInfo: IStudent;
+  setCurrentStudent: (input: any) => void;
 }) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -19,6 +21,8 @@ const StudentTableComponent = (props: {
 }, []);
   return (
     <div>
+
+      {/* Desktop */}
       <div className='hidden lg:grid grid-cols-8 border-y-[#83677e] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#83677e] border-r-[1px] flex items-center break-all'>
           {`${props.studentInfo.first}`}
@@ -40,6 +44,7 @@ const StudentTableComponent = (props: {
           {isAdmin && <Image
             onClick={() => {
               props.setIsEdit(true);
+              props.setCurrentStudent(props.studentInfo)
             }}
             className='h-[25px] w-[25px] cursor-pointer'
             src={edit}
@@ -56,6 +61,7 @@ const StudentTableComponent = (props: {
         </div>
       </div>
 
+      {/* Mobile */}
       <div className='bg-[#ddc7cb] lg:hidden text-center'>
         <hr />
         <div className='flex justify-center'>
@@ -84,6 +90,7 @@ const StudentTableComponent = (props: {
         <div>{`Phone: ${props.studentInfo.phone == "" && "N/A"}`}</div>
         <hr />
       </div>
+
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { IFormData, IStudent } from '@/Interfaces/Interfaces';
-import { createRegirstration } from '@/utils/DataServices';
+import { createRegirstration, updateStudent } from '@/utils/DataServices';
 import React, { useState } from 'react'
 
 const useFormValidation = () => {
@@ -129,6 +129,36 @@ const useFormValidation = () => {
         }
     }
 
+    const handleUpdate = async (ogEmail: string) => {
+      console.log('pass')
+
+        if (!validatingInputs()) {
+          console.error('Failed to validate')
+          return
+        };
+
+        try {
+            const submitedUser: IStudent = {
+              id: 0,
+              first: firstName,
+              last: lastName,
+              email: email,
+              doB: new Date(dob).toISOString(), 
+              phone: phone,
+              address: address,
+              // submitTime: new Date().toISOString(),
+            };
+
+            const info = await updateStudent(submitedUser, ogEmail); 
+            setFormSuccessful(true);
+            resetFields();
+
+        } catch (error: any) {
+            
+          handleErrors(error.message);
+        }
+    }
+
     const handleErrors = (errorMessage: string) => {
         console.log(errorMessage);
         alert(errorMessage);
@@ -172,7 +202,8 @@ const useFormValidation = () => {
     formSuccessful,
     setFormSuccessful,
     handleSubmit,
-    resetFields
+    resetFields,
+    handleUpdate
   }
 }
 
