@@ -1,9 +1,10 @@
 'use client';
 
+import StudentDeleteComponent from '@/components/student/StudentDeleteComponent';
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import ManagementTableComponent from '@/components/student/ManagementTableComponent';
 import StudentEditsComponent from '@/components/student/StudentEditsComponent';
-import StudentDeleteComponent from '@/components/student/StudentDeleteComponent';
+
 import React, { useState } from 'react';
 
 const ManagementPage = () => {
