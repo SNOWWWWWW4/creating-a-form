@@ -33,11 +33,14 @@ const StudentTableComponent = (props: {
         {`${props.studentInfo.email}`}
         </div>
         <div className='col-span-1 px-1 border-l-[#83677e] border-l-[1px] flex items-center break-words'>
-        {`${props.studentInfo.address == "" && "N/A"}`}
+        {`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}
         </div>
-        <div className='col-span-2 px-1 border-x-[#83677e] border-x-[1px] flex items-center justify-between break-all'>
-        {`${props.studentInfo.phone == "" && "N/A"}`}
-          {isAdmin && <Image
+        <div className='col-span-1 px-1 border-x-[#83677e] border-x-[1px] flex items-center justify-between break-all'>
+        {`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}
+          
+        </div>
+        <div className='cols-span-1 px-1 flex justify-between items-center'>
+            {isAdmin && <Image
             onClick={() => {
               props.setIsEdit(true);
             }}
@@ -80,8 +83,8 @@ const StudentTableComponent = (props: {
         <div>{`Last Name: ${props.studentInfo.last}`}</div>
         <div>{`Birthday: ${props.studentInfo.doB}`}</div>
         <div>{`Email: ${props.studentInfo.email}`}</div>
-        <div>{`Address: ${props.studentInfo.address == "" && "N/A"}`}</div>
-        <div>{`Phone: ${props.studentInfo.phone == "" && "N/A"}`}</div>
+        <div>{`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}</div>
+        <div>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>
         <hr />
       </div>
     </div>

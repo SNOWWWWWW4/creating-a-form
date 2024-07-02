@@ -18,8 +18,60 @@ const StudentDirectoryPage = () => {
 
     const getStudent = async () => {
       let studentsArr = await getAllStudents();
-      console.log(studentsArr);
-      setStudentArr(studentsArr);
+      if(sortBy == 0){
+        setStudentArr(studentsArr);
+      }else if(sortBy == 1){
+        let firstAZ = studentsArr.sort((a,b) => {
+          if(a.first.toLowerCase()<b.first.toLowerCase()){
+              return -1;
+          }
+          if(a.first.toLowerCase()>b.first.toLowerCase()){
+              return 1;
+          }
+          return 0;
+      })
+      setStudentArr(firstAZ);
+
+
+      }else if(sortBy == 2){
+        let firstZA = studentsArr.sort((a,b) => {
+          if(a.first.toLowerCase()>b.first.toLowerCase()){
+              return -1;
+          }
+          if(a.first.toLowerCase()<b.first.toLowerCase()){
+              return 1;
+          }
+          return 0;
+      })
+      setStudentArr(firstZA);
+
+
+      }else if(sortBy == 3){
+        let lastAZ = studentsArr.sort((a,b) => {
+          if(a.last.toLowerCase()<b.last.toLowerCase()){
+              return -1;
+          }
+          if(a.last.toLowerCase()>b.last.toLowerCase()){
+              return 1;
+          }
+          return 0;
+      })
+      setStudentArr(lastAZ);
+
+
+
+      }else if(sortBy == 4){
+        let lastZA = studentsArr.sort((a,b) => {
+          if(a.last.toLowerCase()>b.last.toLowerCase()){
+              return -1;
+          }
+          if(a.last.toLowerCase()<b.last.toLowerCase()){
+              return 1;
+          }
+          return 0;
+      })
+      setStudentArr(lastZA);
+      }
     }
 
     getStudent();
@@ -101,8 +153,11 @@ const StudentDirectoryPage = () => {
               <div className='col-span-1 flex px-1.5 items-center font-bold truncate'>
                 Address
               </div>
-              <div className='col-span-2 flex px-1.5 items-center font-bold truncate'>
+              <div className='col-span-1 flex px-1.5 items-center font-bold truncate'>
                 Phone #
+              </div>
+              <div className='col-span-1 flex px-1.5 items-center font-bold truncate'>
+
               </div>
             </div>
           </div>
