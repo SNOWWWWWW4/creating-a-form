@@ -18,7 +18,6 @@ const StudentDirectoryPage = () => {
 
     const getStudent = async () => {
       let studentsArr = await getAllStudents();
-      console.log(studentsArr);
       setStudentArr(studentsArr);
     }
 

@@ -15,56 +15,35 @@ const ManagementPage = () => {
   const [sortBy, setSortBy] = useState<number>(0);
 
   useEffect(() => {
-    const getUser = async() => {
+    const getUser = async () => {
       const usersArr = await getAllUsers();
-      if(sortBy == 0){
+
+      if (sortBy === 0) {
         setUserArr(usersArr);
-      }else if(sortBy == 1){
-        let firstAZ = usersArr.sort((a,b) => {
-          if(a.first<b.first){
-              return -1;
+      } else if (sortBy === 1) {
+        let emailAZ = usersArr.sort((a, b) => {
+          if (a.email < b.email) {
+            return -1;
           }
-          if(a.first>b.first){
-              return 1;
-          }
-          return 0;
-      })
-        setUserArr(firstAZ);
-      }else if(sortBy == 2){
-        let firstZA = usersArr.sort((a,b) => {
-          if(a.first>b.first){
-              return -1;
-          }
-          if(a.first<b.first){
-              return 1;
+          if (a.email > b.email) {
+            return 1;
           }
           return 0;
-      })
-      setUserArr(firstZA);
-      }else if(sortBy == 3){
-        let lastAZ = usersArr.sort((a,b) => {
-          if(a.last<b.last){
-              return -1;
+        });
+        setUserArr(emailAZ);
+      } else if (sortBy === 2) {
+        let emailZA = usersArr.sort((a, b) => {
+          if (a.email > b.email) {
+            return -1;
           }
-          if(a.last>b.last){
-              return 1;
-          }
-          return 0;
-      })
-      setUserArr(lastAZ);
-      }else if(sortBy == 4){
-        let lastZA = usersArr.sort((a,b) => {
-          if(a.last>b.last){
-              return -1;
-          }
-          if(a.last<b.last){
-              return 1;
+          if (a.email < b.email) {
+            return 1;
           }
           return 0;
-      })
-      setUserArr(lastZA);
+        });
+        setUserArr(emailZA);
       }
-    }
+    };
     getUser();
   }, [sortBy])
 
