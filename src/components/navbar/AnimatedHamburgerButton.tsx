@@ -9,7 +9,8 @@ export default function AnimatedHamburgerButton({
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
-    <MotionConfig
+    <div className='z-50'>
+      <MotionConfig
       transition={{
         duration: 0.5,
         ease: 'easeInOut',
@@ -23,17 +24,17 @@ export default function AnimatedHamburgerButton({
       >
         <motion.span
           variants={VARIANTS.top}
-          className='absolute h-1 w-8 bg-purple-400'
+          className='absolute h-1 w-8 bg-white'
           style={{ y: '-50%', left: '50%', x: '-50%', top: '35%' }}
         />
         <motion.span
           variants={VARIANTS.middle}
-          className='absolute h-1 w-8 bg-purple-400'
+          className='absolute h-1 w-8 bg-white'
           style={{ left: '50%', x: '-50%', top: '50%', y: '-50%' }}
         />
         <motion.span
           variants={VARIANTS.bottom}
-          className='absolute h-1 w-4 bg-purple-400'
+          className='absolute h-1 w-4 bg-white'
           style={{
             x: '-50%',
             y: '50%',
@@ -43,6 +44,8 @@ export default function AnimatedHamburgerButton({
         />
       </motion.button>
     </MotionConfig>
+    </div>
+    
   );
 }
 const VARIANTS = {
