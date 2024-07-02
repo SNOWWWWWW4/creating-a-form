@@ -26,7 +26,7 @@ const useLogin = () => {
 
   const handleAdmin = () => {
     localStorage.setItem('admin', 'true')
-    router.push('/pages/HomePage')
+    router.push('/pages/ManagementPage')
   }
 
   // Making sure the inputs are in the correct format
