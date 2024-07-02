@@ -1,20 +1,13 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useFormValidation from '@/hooks/useFormValidation';
-import { Check, Visibility, VisibilityOff } from '@mui/icons-material';
 import {
   Alert,
   Button,
   FormControl,
-  IconButton,
-  InputAdornment,
   Snackbar,
   TextField,
-  Typography,
 } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
-import { green, red } from '@mui/material/colors';
 
 const StudentEditsComponent = (props: {
   setIsEdit: (input: boolean) => void;
