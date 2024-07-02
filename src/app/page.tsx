@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { green, red } from '@mui/material/colors';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   
@@ -35,6 +36,9 @@ export default function Home() {
     emailError,
     passwordError,
     handleSubmit,
+    // handleAdmin,
+    setAdmin,
+    admin,
     changePassword
   } = useLogin();
 
@@ -47,6 +51,7 @@ export default function Home() {
   const handleEyeClick = () => setVisible(!visible);
   const handleEyeClickTwo = () => setVisibleTwo(!visibleTwo);
 
+  const router = useRouter();
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
@@ -97,6 +102,12 @@ export default function Home() {
       setSpec(false);
     }
   }, [password]);
+
+  // const handleAdmin = () => {
+  //   setAdmin(true)
+  //   router.push('/pages/HomePage')
+  //   console.log(admin)
+  // }
 
   return (
     <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24 font-mainFont'>
@@ -337,6 +348,7 @@ export default function Home() {
                   variant='outlined'
                   color='secondary'
                   className='col-span-2'
+                  onClick={()=> {setAdmin(true); router.push('/pages/ManagementPage')}}
                 >
                   Admin
                 </Button>

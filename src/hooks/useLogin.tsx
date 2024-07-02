@@ -133,6 +133,12 @@ const useLogin = () => {
     }
   };
 
+  // const handleAdmin = () => {
+  //   setAdmin(true)
+  //   router.push('/pages/HomePage')
+  //   console.log(admin)
+  // }
+
   // Resetting the  fields
   const resetFields = () => {
     setEmail('');
@@ -174,7 +180,10 @@ const useLogin = () => {
     passwordError,
     confirmPasswordError,
     handleSubmit,
+    // handleAdmin,
     changePassword,
+    admin,
+    setAdmin
   };
 };
 
