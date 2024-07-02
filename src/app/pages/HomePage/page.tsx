@@ -1,4 +1,4 @@
-import HomeFormComponent from '@/components/landingpageform/HomeFormComponent'
+import HomeFormComponent from '@/components/form/HomeFormComponent'
 import NavBarComponent from '@/components/navbar/NavBarComponent'
 import React from 'react'
 

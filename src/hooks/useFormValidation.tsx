@@ -1,4 +1,4 @@
-import { IFormData } from '@/Interfaces/Interfaces';
+import { IFormData, IStudent } from '@/Interfaces/Interfaces';
 import { createRegirstration } from '@/utils/DataServices';
 import React, { useState } from 'react'
 
@@ -108,18 +108,18 @@ const useFormValidation = () => {
 
         try {
 
-            const submitedUser: IFormData = {
-              Id: 0,
-              First: firstName,
-              Last: lastName,
-              Email: email,
-              DoB: new Date(dob).toISOString(), 
-              Phone: phone,
-              Address: address,
-              SubmitTime: new Date().toISOString(),
+            const submitedUser: IStudent = {
+              id: 0,
+              first: firstName,
+              last: lastName,
+              email: email,
+              doB: new Date(dob).toISOString(), 
+              phone: phone,
+              address: address,
+              // submitTime: new Date().toISOString(),
             };
 
-            // const info = await createRegirstration(submitedUser); 
+            const info = await createRegirstration(submitedUser); 
             setFormSuccessful(true);
             resetFields();
 
@@ -152,11 +152,17 @@ const useFormValidation = () => {
 
   return {
     firstName,
+    setFirstName,
     lastName,
+    setLastName,
     email,
+    setEmail,
     dob,
+    setDob,
     address,
+    setAddress,
     phone,
+    setPhone,
     firstNameError,
     lastNameError,
     emailError,
@@ -164,6 +170,7 @@ const useFormValidation = () => {
     addressError,
     phoneError,
     formSuccessful,
+    setFormSuccessful,
     handleSubmit,
     resetFields
   }

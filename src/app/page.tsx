@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { green, red } from '@mui/material/colors';
-import { Router } from 'next/router';
 
 export default function Home() {
 
@@ -353,7 +352,7 @@ export default function Home() {
                 </Button>
                 <div className='col-span-2'>
                   <div className='mt-5 flex-group'>
-                    <h1 className=' '>Are you new?</h1>
+                    <h1 className=''>Are you new?</h1>
                     <Button
                       variant='text'
                       color='info'

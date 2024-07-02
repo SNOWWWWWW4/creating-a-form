@@ -1,8 +1,5 @@
 import { ILogin, IToken } from '@/Interfaces/Interfaces';
-import {
-  createAccount,
-  login,
-} from '@/utils/DataServices';
+import { createAccount, login } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -92,8 +89,7 @@ const useLogin = () => {
           id: 0,
           email: email,
           password: password,
-          // false is placeholder
-          isAdmin: false
+          adminStatus: false,
         };
 
         await createAccount(userData);
@@ -105,29 +101,28 @@ const useLogin = () => {
           id: 0,
           email: email,
           password: password,
-          isAdmin: false
+          adminStatus: false,
         };
 
-        // const token: IToken = await login(userData);
-        const token = { token: '' }; // placeholder for now
+        const token: IToken = await login(userData);
 
         if (token.token) {
-          // not sure if this will work
-
-          // const loginData = await getLoggedInUserData(email)
-
-          // if(loginData.admin === 'true'){
-          //     setAdmin(true);
-          // }
-          // else{
-          //     setAdmin(false);
-          // }
-
           setLoginSuccess(true);
+          if (token.adminStatus) {
+            setAdmin(true);
 
-          setTimeout(() => {
-            router.push('/pages/landing');
-          }, 1000);
+            setTimeout(() => {
+              router.push('/pages/ManagementPage');
+            }, 1000);
+          } else if (!token.adminStatus) {
+            setAdmin(false);
+
+            setTimeout(() => {
+              router.push('/pages/HomePage');
+            }, 1000);
+          } else {
+            alert('Something went wrong');
+          }
         } else {
           setPasswordError('Incorect password');
         }
@@ -150,7 +145,8 @@ const useLogin = () => {
 
   // Error handling and error message
   const handleErrors = (errorMessage: string) => {
-    if (errorMessage.includes('email')) {   // ex.   errorMessage.includes('Email not found')
+    if (errorMessage.includes('email')) {
+      // ex.   errorMessage.includes('Email not found')
       setEmailError(errorMessage); // meassage here  ex.   setUserNameError('User not found')
     } else if (errorMessage.includes('password')) {
       setPasswordError(errorMessage);

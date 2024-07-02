@@ -6,13 +6,13 @@ export interface IStudent {
   doB: string;
   phone: string | null;
   address: string | null;
-//   Password: string;
 //   SubmitTime: string;
 }
 
 // For token
 export interface IToken {
   token: string;
+  adminStatus: boolean;
 }
 
 // For login and create account
@@ -20,14 +20,16 @@ export interface ILogin {
   id: number;
   password: string;
   email: string;
-  isAdmin: boolean;
+  adminStatus: boolean;
 }
-/*
-  "id": 0,
-  "password": "string",
-  "email": "string",
-  "isAdmin": true
-*/
+
+// For reset password
+export interface INewPassword {
+  email: string;
+  oldPassword: string;
+  newPassword: string;
+}
+
 
 // For the form
 export interface IFormData {
@@ -39,10 +41,4 @@ export interface IFormData {
   Phone: string | null;
   Address: string | null;
   SubmitTime: string;
-}
-
-export interface INewPassword {
-  email: string;
-  oldPassword: string;
-  newPassword: string;
 }
