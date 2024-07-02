@@ -49,35 +49,35 @@ const StudentDirectoryPage = () => {
             onClick={() => {
               setSortBy(0);
             }}
-            className={sortBy == 0 ? `bg-studentDirect hover:bg-[#3b2d2e] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px] font-bold` : `bg-[#4d3c3e] hover:bg-[#3b2d2e] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
+            className={sortBy == 0 ? `bg-studentDirect hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px] font-bold` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
               Default
             </div>
             <div 
             onClick={() => {
               setSortBy(1);
             }}
-            className={sortBy == 1 ? `bg-studentDirect hover:bg-[#614e4f] cursor-pointer flex items-center justify-center font-bold` : `bg-[#4d3c3e] hover:bg-[#3b2d2e] cursor-pointer flex items-center justify-center`}>
+            className={sortBy == 1 ? `bg-studentDirect hover:bg-[#30252d] cursor-pointer flex items-center justify-center font-bold` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
               First Name A-Z
             </div>
             <div 
             onClick={() => {
               setSortBy(2);
             }}
-            className={sortBy == 2 ? `bg-studentDirect hover:bg-[#3b2d2e] cursor-pointer flex items-center justify-center font-bold` : `bg-[#4d3c3e] hover:bg-[#3b2d2e]  cursor-pointer flex items-center justify-center`}>
+            className={sortBy == 2 ? `bg-studentDirect hover:bg-[#30252d] cursor-pointer flex items-center justify-center font-bold` : `bg-[#53404f] hover:bg-[#30252d]  cursor-pointer flex items-center justify-center`}>
               First Name Z-A
             </div>
             <div 
             onClick={() => {
               setSortBy(3);
             }}
-            className={sortBy == 3 ? `bg-studentDirect hover:bg-[#3b2d2e] cursor-pointer flex items-center justify-center font-bold` : `bg-[#4d3c3e] hover:bg-[#3b2d2e] cursor-pointer flex items-center justify-center`}>
+            className={sortBy == 3 ? `bg-studentDirect hover:bg-[#3b2d2e] cursor-pointer flex items-center justify-center font-bold` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
               Last Name A-Z
             </div>
             <div 
             onClick={() => {
               setSortBy(4);
             }}
-            className={sortBy == 4 ? `bg-studentDirect hover:bg-[#3b2d2e] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px] font-bold` : `bg-[#4d3c3e] hover:bg-[#3b2d2e] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
+            className={sortBy == 4 ? `bg-studentDirect hover:bg-[#30252d] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px] font-bold` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
               Last Name Z-A
             </div>
           </div>
