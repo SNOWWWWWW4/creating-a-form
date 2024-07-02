@@ -5,9 +5,26 @@ import StudentTableComponent from '@/components/Student/StudentTableComponent';
 import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent';
 
 import NavBarComponent from '@/components/navbar/NavBarComponent';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getAllStudents } from '@/utils/DataServices';
 
 const StudentDirectoryPage = () => {
+
+  const [studentArr, setStudentArr] = useState<any>();
+  const [sortBy, setSortBy] = useState<number>(0);
+
+  useEffect(() => {
+
+    const getStudent = async () => {
+      let studentsArr = await getAllStudents();
+      console.log(studentsArr);
+      setStudentArr(studentsArr);
+    }
+
+    getStudent();
+  }, [sortBy])
+
+
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
@@ -21,20 +38,40 @@ const StudentDirectoryPage = () => {
           Student Directory
         </h1>
         <div className='bg-[#ECD8D1] min-h-[500px] h-auto rounded-[10px]'>
-          <div className='bg-[#533f41] h-20 grid grid-cols-5 text-white font-thin text-[16px] rounded-t-[10px]'>
-            <div className='hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center'>
+          <div className='h-20 grid grid-cols-5 text-white font-thin text-[16px] rounded-t-[10px]'>
+            <div 
+            onClick={() => {
+              setSortBy(0);
+            }}
+            className={sortBy == 0 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
               Default
             </div>
-            <div className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
+            <div 
+            onClick={() => {
+              setSortBy(1);
+            }}
+            className={sortBy == 1 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
               First Name A-Z
             </div>
-            <div className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
+            <div 
+            onClick={() => {
+              setSortBy(2);
+            }}
+            className={sortBy == 2 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f]  cursor-pointer flex items-center justify-center`}>
               First Name Z-A
             </div>
-            <div className='hover:bg-[#614e4f] cursor-pointer flex items-center justify-center'>
+            <div 
+            onClick={() => {
+              setSortBy(3);
+            }}
+            className={sortBy == 3 ? `bg-[#ECD8D1] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center ` : `bg-[#533f41] hover:bg-[#614e4f] cursor-pointer flex items-center justify-center`}>
               Last Name A-Z
             </div>
-            <div className='hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center'>
+            <div 
+            onClick={() => {
+              setSortBy(4);
+            }}
+            className={sortBy == 4 ? `bg-[#ECD8D1] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]` : `bg-[#533f41] hover:bg-[#614e4f] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
               Last Name Z-A
             </div>
           </div>
@@ -62,10 +99,25 @@ const StudentDirectoryPage = () => {
             </div>
           </div>
           <div className='border-[#ddc7cb] lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
-            <StudentTableComponent
+            {
+              studentArr && studentArr.map((student:any,idx:number) => {
+                return(
+                  <div key={idx}>
+                    <StudentTableComponent
+                    studentInfo={student}
               setIsDelete={setIsDelete}
               setIsEdit={setIsEdit}
-            />
+              />
+                  </div>
+                  
+                )
+              }
+                
+              
+              )
+            }
+            
+            
           </div>
         </div>
       </div>

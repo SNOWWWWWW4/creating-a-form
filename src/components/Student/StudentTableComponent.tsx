@@ -7,27 +7,28 @@ import Image from 'next/image';
 const StudentTableComponent = (props: {
   setIsDelete: (input: boolean) => void;
   setIsEdit: (input: boolean) => void;
+  studentInfo:any
 }) => {
   return (
     <div>
       <div className='hidden lg:grid grid-cols-8 border-y-[#ddc7cb] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#ddc7cb] border-r-[1px] flex items-center break-all'>
-          {'First'}
+          {`${props.studentInfo.first}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-          {'Last'}
+        {`${props.studentInfo.last}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-          {'12-31-2024'}
+          {`${props.studentInfo.doB}`}
         </div>
         <div className='col-span-2 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-          {'hello@gmail.com'}
+        {`${props.studentInfo.email}`}
         </div>
         <div className='col-span-1 px-1 border-l-[#ddc7cb] border-l-[1px] flex items-center break-words'>
-          {'1234 Strawberry Ct.'}
+        {`${props.studentInfo.address == "" && "N/A"}`}
         </div>
         <div className='col-span-2 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
-          {'(209)-111-1111'}
+        {`${props.studentInfo.phone == "" && "N/A"}`}
           <Image
             onClick={() => {
               props.setIsEdit(true);
@@ -67,12 +68,12 @@ const StudentTableComponent = (props: {
             alt='remove icon'
           />
         </div>
-        <div>{'First'}</div>
-        <div>{'Last'}</div>
-        <div>{'12-31-2024'}</div>
-        <div>{'hello@gmail.com'}</div>
-        <div>{'1234 Strawberry Ct.'}</div>
-        <div>{'(209)-111-1111'}</div>
+        <div>{`First Name: ${props.studentInfo.first}`}</div>
+        <div>{`Last Name: ${props.studentInfo.last}`}</div>
+        <div>{`Birthday: ${props.studentInfo.doB}`}</div>
+        <div>{`Email: ${props.studentInfo.email}`}</div>
+        <div>{`Address: ${props.studentInfo.address == "" && "N/A"}`}</div>
+        <div>{`Phone: ${props.studentInfo.phone == "" && "N/A"}`}</div>
         <hr />
       </div>
     </div>

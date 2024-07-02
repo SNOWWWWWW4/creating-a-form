@@ -4,12 +4,23 @@ import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent'
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import ManagementTableComponent from '@/components/Student/ManagementTableComponent';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ManagementEditComponent from '@/components/Student/ManagementEditComponent';
+import { getAllUsers } from '@/utils/DataServices';
 
 const ManagementPage = () => {
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [userArr, setUserArr] = useState<any>();
+
+  useEffect(() => {
+    const getUser = async() => {
+      let usersArr = await getAllUsers();
+      setUserArr(usersArr);
+      console.log(usersArr);
+    }
+    getUser();
+  }, [])
 
   return (
     <div className='bg-gradient-to-r from-[#d9818f] to-[#bf8764] h-screen'>
@@ -58,10 +69,23 @@ const ManagementPage = () => {
               </div>
             </div>
             <div className='border-[#ddc7cb] lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
-              <ManagementTableComponent
-                setIsDelete={setIsDelete}
-                setIsEdit={setIsEdit}
+            {
+              userArr && userArr.map((user:any,idx:number) => {
+                return(
+                  <div key={idx}>
+                    <ManagementTableComponent
+                    userInfo={user}
+              setIsDelete={setIsDelete}
+              setIsEdit={setIsEdit}
               />
+                  </div>
+                  
+                )
+              }
+                
+              
+              )
+            }
             </div>
           </div>
         </div>

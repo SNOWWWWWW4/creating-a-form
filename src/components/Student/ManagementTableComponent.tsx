@@ -6,21 +6,22 @@ import Image from 'next/image';
 const ManagementTableComponent = (props: {
   setIsDelete: (input: boolean) => void;
   setIsEdit: (input: boolean) => void;
+  userInfo:any
 }) => {
   return (
     <div>
       <div className='hidden lg:grid grid-cols-5 border-y-[#ddc7cb] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#ddc7cb] border-r-[1px] flex items-center break-all'>
-          {'First'}
+          {`${!props.userInfo.first && "N/A"}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-          {'Last'}
+        {`${!props.userInfo.last && "N/A"}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-          {'12-31-2024'}
+        {`${!props.userInfo.doB && "N/A"}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-          {'hello@gmail.com'}
+        {`${props.userInfo.email}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center justify-between break-all'>
           <Image
@@ -62,10 +63,10 @@ const ManagementTableComponent = (props: {
             alt='remove icon'
           />
         </div>
-        <div>{'First'}</div>
-        <div>{'Last'}</div>
-        <div>{'12-31-2024'}</div>
-        <div>{'hello@gmail.com'}</div>
+        <div>{`${!props.userInfo.first && "N/A"}`}</div>
+        <div>{`${!props.userInfo.last && "N/A"}`}</div>
+        <div>{`${!props.userInfo.doB && "N/A"}`}</div>
+        <div>{`${props.userInfo.email}`}</div>
         <hr />
       </div>
     </div>
