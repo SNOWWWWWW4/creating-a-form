@@ -2,7 +2,7 @@ import HomeFormComponent from '@/components/form/HomeFormComponent'
 import NavBarComponent from '@/components/navbar/NavBarComponent'
 import React from 'react'
 
-const LandingPage = () => {
+const HomePage = () => {
   return (
     <div className='bg-gradient-to-r from-[#d9818f] to-[#bf8764] h-screen'>
       <NavBarComponent/>
@@ -16,4 +16,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default HomePage

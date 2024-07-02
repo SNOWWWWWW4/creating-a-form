@@ -66,8 +66,6 @@ const ManagementTableComponent = (props: {
         <div>{'Last'}</div>
         <div>{'12-31-2024'}</div>
         <div>{'hello@gmail.com'}</div>
-        <div>{'1234 Strawberry Ct.'}</div>
-        <div>{'(209)-111-1111'}</div>
         <hr />
       </div>
     </div>

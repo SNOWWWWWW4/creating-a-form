@@ -3,9 +3,9 @@
 import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent';
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import ManagementTableComponent from '@/components/Student/ManagementTableComponent';
-import StudentEditsComponent from '@/components/Student/StudentEditsComponent';
 
 import React, { useState } from 'react';
+import ManagementEditComponent from '@/components/Student/ManagementEditComponent';
 
 const ManagementPage = () => {
   const [isDelete, setIsDelete] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const ManagementPage = () => {
     <div className='bg-gradient-to-r from-[#d9818f] to-[#bf8764] h-screen'>
       <NavBarComponent />
       {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
-      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
+      {isEdit && <ManagementEditComponent setIsEdit={setIsEdit} />}
       <div>
         <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
           <h1 className='text-white text-[35px] font-thin mb-4'>
