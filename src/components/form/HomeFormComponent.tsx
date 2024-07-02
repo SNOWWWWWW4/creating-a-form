@@ -68,7 +68,7 @@ const HomeFormComponent = () => {
 
   return (
     <>
-      <div className='w-full bg-[#ffffff] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
+      <div className='w-full bg-studentDirect border-8 border-[#83677e] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
         <FormControl fullWidth>
           <div className='grid grid-cols-2 gap-4'>
             <TextField
@@ -81,6 +81,12 @@ const HomeFormComponent = () => {
               onKeyDown={handleKeydown}
               className='col-span-2 sm:col-span-1'
               required
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               label='Last Name'
@@ -92,6 +98,12 @@ const HomeFormComponent = () => {
               onKeyDown={handleKeydown}
               className='col-span-2 sm:col-span-1'
               required
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               
@@ -105,6 +117,10 @@ const HomeFormComponent = () => {
               type='date'
               InputProps={{
                 inputProps: { min: formattedHundredYearsAgo, max: today },
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
               }}
               required
             />
@@ -117,6 +133,12 @@ const HomeFormComponent = () => {
               helperText={phoneError}
               onKeyDown={handleKeydown}
               className='col-span-2 sm:col-span-1'
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               label='Email'
@@ -128,6 +150,12 @@ const HomeFormComponent = () => {
               onKeyDown={handleKeydown}
               className='col-span-2'
               required
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               label='Address'
@@ -138,13 +166,19 @@ const HomeFormComponent = () => {
               helperText={addressError}
               onKeyDown={handleKeydown}
               className='col-span-2'
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
 
             <Button
               onClick={handleSubmit}
               variant='contained'
               size='large'
-              className='col-span-2 justify-center'
+              className='col-span-2 font-mainFont justify-center'
             >
               Submit
             </Button>
