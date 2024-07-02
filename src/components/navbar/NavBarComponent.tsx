@@ -8,15 +8,21 @@ import { Button } from '@mui/material';
 
 const NavBarComponent = () => {
   const [active, setActive] = useState<boolean>(false);
-  const {
-    admin,
-  } = useLogin();
-  const router = useRouter();
 
+  const router = useRouter();
   const handleLogout = () => {
     router.push('/')
     
   }
+  
+  const { admin, setAdmin } = useLogin();
+  useEffect(() => {
+    const holder = localStorage.getItem('admin');
+    if(holder) {
+      const pasreHolder = JSON.parse(holder);
+      setAdmin(pasreHolder.adminStatus);
+    }
+  }, [setAdmin]);
 
   return (
     <div>

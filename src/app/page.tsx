@@ -36,9 +36,7 @@ export default function Home() {
     emailError,
     passwordError,
     handleSubmit,
-    // handleAdmin,
-    setAdmin,
-    admin,
+    handleAdmin,
     changePassword
   } = useLogin();
 
@@ -103,11 +101,6 @@ export default function Home() {
     }
   }, [password]);
 
-  // const handleAdmin = () => {
-  //   setAdmin(true)
-  //   router.push('/pages/HomePage')
-  //   console.log(admin)
-  // }
 
   return (
     <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24 font-mainFont'>
@@ -348,7 +341,7 @@ export default function Home() {
                   variant='outlined'
                   color='secondary'
                   className='col-span-2'
-                  onClick={()=> {setAdmin(true); router.push('/pages/ManagementPage')}}
+                  onClick={()=> {handleAdmin()}}
                 >
                   Admin
                 </Button>

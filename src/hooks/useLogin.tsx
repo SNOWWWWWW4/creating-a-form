@@ -24,6 +24,11 @@ const useLogin = () => {
     router.push('/pages/ChangePasswordPage');
   };
 
+  const handleAdmin = () => {
+    localStorage.setItem('admin', 'true')
+    router.push('/pages/HomePage')
+  }
+
   // Making sure the inputs are in the correct format
   const validatingInputs = () => {
     let valid = true;
@@ -108,17 +113,17 @@ const useLogin = () => {
 
         if (token.token) {
           setLoginSuccess(true);
-          if (token.adminStatus) {
-            setAdmin(true);
 
+          localStorage.setItem('admin', JSON.stringify(token.adminStatus));
+
+          if (token.adminStatus) {
             setTimeout(() => {
               router.push('/pages/ManagementPage');
             }, 1000);
           } else if (!token.adminStatus) {
-            setAdmin(false);
 
             setTimeout(() => {
-              router.push('/pages/HomePage');
+              router.push('/pages/HomePage')
             }, 1000);
           } else {
             alert('Something went wrong');
@@ -132,12 +137,6 @@ const useLogin = () => {
       resetFields();
     }
   };
-
-  // const handleAdmin = () => {
-  //   setAdmin(true)
-  //   router.push('/pages/HomePage')
-  //   console.log(admin)
-  // }
 
   // Resetting the  fields
   const resetFields = () => {
@@ -180,10 +179,10 @@ const useLogin = () => {
     passwordError,
     confirmPasswordError,
     handleSubmit,
-    // handleAdmin,
+    handleAdmin,
     changePassword,
     admin,
-    setAdmin
+    setAdmin,
   };
 };
 
