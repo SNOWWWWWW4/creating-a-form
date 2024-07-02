@@ -1,3 +1,4 @@
+import { INewPassword } from '@/Interfaces/Interfaces';
 import { resetPassword } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -116,17 +117,22 @@ const useResetPassword = () => {
     if(!validatingSecondSetOfInputs()) return;
 
     try {
+      const newPass: INewPassword = {
+        email,
+        oldPassword,
+        newPassword,
+      };
 
-      // await resetPassword(email,  newPassword).then(data =>{
-      //     if(data){
-      //       setSuccessfulPasswordReset(true);
-      //       setTimeout(() => {
-      //         router.push('/')
-      //         resetFields();
-      //         setSwitchBoolTwo(false);
-      //       }, 1000)
-      //     }
-      // })
+      await resetPassword(newPass).then(data => {
+        if (data) {
+          setSuccessfulPasswordReset(true);
+          setTimeout(() => {
+            router.push('/')
+            resetFields();
+            setSwitchBoolTwo(false);
+          }, 1000)
+        }
+      })
 
     } catch (error: any) {
       handleErrors(error.message);
@@ -174,6 +180,7 @@ const useResetPassword = () => {
     resetFields,
     switchBoolTwo,
     setSwitchBoolTwo,
+    successfulPasswordReset
   }
 }
 

@@ -1,4 +1,4 @@
-import StudentTableComponent from '@/components/Student/StudentTableComponent'
+import StudentTableComponent from '@/components/student/StudentTableComponent'
 import NavBarComponent from '@/components/navbar/NavBarComponent'
 import React from 'react'
 

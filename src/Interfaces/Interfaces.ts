@@ -6,7 +6,6 @@ export interface IStudent {
   doB: string;
   phone: string | null;
   address: string | null;
-//   Password: string;
 //   SubmitTime: string;
 }
 
@@ -23,12 +22,14 @@ export interface ILogin {
   email: string;
   adminStatus: boolean;
 }
-/*
-  "id": 0,
-  "password": "string",
-  "email": "string",
-  "isAdmin": true
-*/
+
+// For reset password
+export interface INewPassword {
+  email: string;
+  oldPassword: string;
+  newPassword: string;
+}
+
 
 // For the form
 export interface IFormData {
@@ -40,10 +41,4 @@ export interface IFormData {
   Phone: string | null;
   Address: string | null;
   SubmitTime: string;
-}
-
-export interface INewPassword {
-  email: string;
-  oldPassword: string;
-  newPassword: string;
 }

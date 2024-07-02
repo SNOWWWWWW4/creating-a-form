@@ -2,18 +2,23 @@ import { ILogin, INewPassword, IStudent } from "@/Interfaces/Interfaces";
 
 const url = "https://codestackform.azurewebsites.net";
 
-// **** Getting all users ****
-export const getAllUsers = async () => {
-  const res = await fetch(url + "/GetUsers");
-  const data: IStudent[] = await res.json();
-  return data;
-};
-
-// **** Getting all students ****
-export const getAllStudents = async () => {
-  const res = await fetch(url + "/GetStudents");
-  const data: IStudent[] = await res.json();
-  return data;
+//// **** Login ****
+export const login = async (loginUser: ILogin) => {
+  const res = await fetch(url + `/Login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: loginUser.email,
+      password: loginUser.password,
+    }),
+  });
+  
+  if (!res.ok) {
+    throw new Error(`Failed to login\nError status: ${res.status}`);
+  }
+  return await res.json();
 };
 
 // **** Create account ****
@@ -33,11 +38,11 @@ export const createAccount = async (loginUser: ILogin) => {
 };
 
 // **** ResetPassword ****
-export const resetPassword = async (newPassword: INewPassword) => {
+export const resetPassword = async ( newPassword: INewPassword ): Promise<boolean> => {
   const res = await fetch(url + `/ResetPassword`, {
-    method: "PUT",
+    method: 'PUT',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(newPassword),
   });
@@ -45,25 +50,8 @@ export const resetPassword = async (newPassword: INewPassword) => {
   if (!res.ok) {
     throw new Error(`Failed to reset password\nError status: ${res.status}`);
   }
-};
 
-//// **** Login ****
-export const login = async (loginUser: ILogin) => {
-  const res = await fetch(url + `/Login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: loginUser.email,
-      password: loginUser.password,
-    }),
-  });
-
-  if (!res.ok) {
-    throw new Error(`Failed to login\nError status: ${res.status}`);
-  }
-  return await res.json();
+  return res.ok;
 };
 
 // ***** Submit Form ****
@@ -82,6 +70,20 @@ export const createRegirstration = async (data: IStudent) => {
   const dt = await res.text();
   console.log(dt);
   // return dt;
+};
+
+// **** Getting all users ****
+export const getAllUsers = async () => {
+  const res = await fetch(url + "/GetUsers");
+  const data: IStudent[] = await res.json();
+  return data;
+};
+
+// **** Getting all students ****
+export const getAllStudents = async () => {
+  const res = await fetch(url + "/GetStudents");
+  const data: IStudent[] = await res.json();
+  return data;
 };
 
 // ***** Update Student ****
@@ -109,4 +111,3 @@ export const removeStudent = async (email: string) => {
     throw new Error(`Failed to delete student\nError status: ${res.status}`);
   }
 };
-
