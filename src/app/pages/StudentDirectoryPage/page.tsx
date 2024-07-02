@@ -90,7 +90,6 @@ const StudentDirectoryPage = () => {
 
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
-      {isDelete && <StudentDeleteComponent setIsDelete={setIsDelete} />}
       {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
@@ -168,8 +167,10 @@ const StudentDirectoryPage = () => {
                   <div key={idx}>
                     <StudentTableComponent
                       studentInfo={student}
+                      isDelete={isDelete}
                       setIsDelete={setIsDelete}
                       setIsEdit={setIsEdit}
+                      handleDelete={handleDelete}
                     />
                   </div>
 
