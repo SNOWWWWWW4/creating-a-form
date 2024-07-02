@@ -9,12 +9,12 @@ const useResetPassword = () => {
   const [email, setEmail] = useState<string>('');
   const [oldPassword, setOldPassword] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
-  const [confrimNewPassword, setConfrimNewPassword] = useState<string>('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
 
   const [emailError, setEmailError] = useState<string>('');
   const [oldPasswordError, setOldPasswordError] = useState<string>('');
   const [newPasswordError, setNewPasswordError] = useState<string>('');
-  const [confrimNewPasswordError, setConfrimNewPasswordError] = useState<string>('');
+  const [confirmNewPasswordError, setConfirmNewPasswordError] = useState<string>('');
 
   const [switchBoolTwo, setSwitchBoolTwo] = useState<boolean>(false);
   const [successfulPasswordReset, setSuccessfulPasswordReset] = useState<boolean>(false);
@@ -101,11 +101,11 @@ const useResetPassword = () => {
     }
 
     // confrim new password
-    if (confrimNewPassword !== newPassword) {
-      setConfrimNewPasswordError('Passwords do not match');
+    if (confirmNewPassword !== newPassword) {
+      setConfirmNewPasswordError('Passwords do not match');
       valid = false;
     } else {
-      setConfrimNewPasswordError('');
+      setConfirmNewPasswordError('');
     }
 
     return valid;
@@ -169,18 +169,19 @@ const useResetPassword = () => {
     setOldPassword,
     newPassword,
     setNewPassword,
-    confrimNewPassword,
-    setConfrimNewPassword,
+    confirmNewPassword,
+    setConfirmNewPassword,
     emailError,
     oldPasswordError,
     newPasswordError,
-    confrimNewPasswordError,
+    confirmNewPasswordError,
     handleContinue,
     handleResetPassword,
     resetFields,
     switchBoolTwo,
     setSwitchBoolTwo,
-    successfulPasswordReset
+    successfulPasswordReset,
+    setSuccessfulPasswordReset,
   }
 }
 
