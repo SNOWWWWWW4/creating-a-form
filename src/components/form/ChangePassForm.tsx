@@ -236,10 +236,16 @@ const ChangePassForm = () => {
                 </div>
               </div>
             </div>
+
+            <div className='col-span-2 mt-4 flex justify-center'>
+              <Button variant='contained' className=' w-full font-mainFont bg-fuchsia-400 hover:bg-fuchsia-800' onClick={handleResetPassword}>
+                Continue
+              </Button>
+              </div>
           </FormControl>
         </div>
       ) : (
-        <div className='font-mainFont w-full max-w-lg bg-white shadow-md rounded-2xl p-2 tablet:p-6 space-y-4 border-8 border-purple-200'>
+        <div className='font-mainFont w-full max-w-lg md:order-2  bg-white shadow-md rounded-2xl p-2 tablet:p-6 space-y-4 border-8 border-purple-200'>
           <h1 className='text-3xl font-bold'>Confirm new password</h1>
           <FormControl className='grid grid-cols-1 justify-center'>
             <div className='grid grid-cols-2 gap-4 justify-center'>

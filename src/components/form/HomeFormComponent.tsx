@@ -8,9 +8,12 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const HomeFormComponent = () => {
-  
+
   const {
     firstName,
     setFirstName,
@@ -49,6 +52,15 @@ const HomeFormComponent = () => {
 
   const handleEyeClick = () => setVisible(!visible);
   const handleEyeClickTwo = () => setVisibleTwo(!visibleTwo);
+
+  const contextClass = {
+    success: "bg-toastBg",
+    error: "bg-red-600",
+    info: "bg-gray-600",
+    warning: "bg-orange-400",
+    default: "bg-yellow-200",
+    dark: "bg-white-600 font-gray-300",
+  };
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -190,21 +202,16 @@ const HomeFormComponent = () => {
           </div>
         </FormControl>
       </div>
-      <Snackbar
-        open={formSuccessful}
-        autoHideDuration={3500}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <Alert
-          onClose={handleClose}
-          severity='success'
-          variant='filled'
-          sx={{ width: '100%' }}
-        >
-          Successfully Submitted. Loading...
-        </Alert>
-      </Snackbar>
+
+      <ToastContainer
+        toastClassName={() =>
+          "relative p-1 flex font-bold min-h-10 rounded-md bg-[#d3ecbc] justify-between overflow-hidden text-black cursor-pointer"
+        }
+        bodyClassName={() => "font-mainFont font-bold bg-[#d3ecbc] text-black p-3 font-med inline-flex block "}
+        position="top-right"
+        icon={false}
+        autoClose={3000} />
+
     </>
   );
 };

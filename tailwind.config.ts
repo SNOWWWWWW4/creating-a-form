@@ -31,7 +31,8 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'mainBg': 'url(/formbg.png)',
-        'studentBg' : 'url(/night4.jpg)'
+        'studentBg' : 'url(/night4.jpg)',
+        'toastBg': 'url(/stars.jpg)'
       },
       fontFamily: {
         mainFont : ['mainFont']

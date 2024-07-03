@@ -4,13 +4,16 @@ import deleteIcon from '@/assets/TrashIcon.png';
 import Image from 'next/image';
 import StudentDeleteComponent from './StudentDeleteComponent';
 import { IStudent } from '@/Interfaces/Interfaces';
+import StudentEditsComponent from './StudentEditsComponent';
 
 
 const StudentTableComponent = (props: {
   isDelete: boolean;
   setIsDelete: (input: boolean) => void;
+  isEdit: boolean;
   setIsEdit: (input: boolean) => void;
-  handleDelete: (input: string) => void;
+  handleDelete: (input: number) => void;
+  handleUpdateData: (input: IStudent) => void;
   studentInfo: IStudent
 }) => {
 
@@ -22,11 +25,12 @@ const StudentTableComponent = (props: {
   }
 }, []);
 
-  const [emailToDelete, setEmailToDelete] = useState<string>();
+  const [idSelect, setIdSelect] = useState<number>();
 
   return (
     <div>
-      {props.isDelete && emailToDelete && <StudentDeleteComponent setIsDelete={props.setIsDelete} handleDelete={props.handleDelete} emailToDelete={emailToDelete} />}
+      {props.isDelete && idSelect && <StudentDeleteComponent setIdSelect={setIdSelect} setIsDelete={props.setIsDelete} handleDelete={props.handleDelete} idSelect={idSelect} />}
+      {props.isEdit && idSelect && <StudentEditsComponent setIdSelect={setIdSelect} setIsEdit={props.setIsEdit} handleUpdateData={props.handleUpdateData} idSelect={idSelect} />}
       <div className='hidden lg:grid grid-cols-8 border-y-[#83677e] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#83677e] border-r-[1px] flex items-center break-all'>
           {`${props.studentInfo.first}`}
@@ -50,6 +54,7 @@ const StudentTableComponent = (props: {
         <div className='cols-span-1 px-1 flex justify-between items-center'>
             {isAdmin && <Image
             onClick={() => {
+              setIdSelect(props.studentInfo.id);
               props.setIsEdit(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -58,7 +63,7 @@ const StudentTableComponent = (props: {
           />}
           {isAdmin && <Image
             onClick={() => {
-              setEmailToDelete(props.studentInfo.email);
+              setIdSelect(props.studentInfo.id);
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -73,6 +78,7 @@ const StudentTableComponent = (props: {
         <div className='flex justify-center'>
           {isAdmin && <Image
             onClick={() => {
+              setIdSelect(props.studentInfo.id);
               props.setIsEdit(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -81,7 +87,7 @@ const StudentTableComponent = (props: {
           />}
           {isAdmin && <Image
             onClick={() => {
-              setEmailToDelete(props.studentInfo.email);
+              setIdSelect(props.studentInfo.id);
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -89,12 +95,12 @@ const StudentTableComponent = (props: {
             alt='remove icon'
           />}
         </div>
-        <div>{`First Name: ${props.studentInfo.first}`}</div>
+        <div className='pt-5'>{`First Name: ${props.studentInfo.first}`}</div>
         <div>{`Last Name: ${props.studentInfo.last}`}</div>
         <div>{`Birthday: ${props.studentInfo.doB.split("T")[0]}`}</div>
         <div>{`Email: ${props.studentInfo.email}`}</div>
         <div>{`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}</div>
-        <div>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>
+        <div className='pb-5'>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>
         <hr />
       </div>
     </div>
