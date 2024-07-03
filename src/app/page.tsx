@@ -105,7 +105,7 @@ export default function Home() {
   return (
     <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24'>
       <section className='flex flex-col justify-center items-center'>
-        <img className='w-96' src='/moon.png' />
+        <img className='lg:w-96 md:w-80 w-60' src='/moon.png' />
       </section>
       <section className='flex flex-col justify-center items-center'>
         {switchBool ? (
