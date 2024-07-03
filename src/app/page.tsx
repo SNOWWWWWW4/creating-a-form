@@ -366,8 +366,8 @@ export default function Home() {
                 <Button
                   variant='outlined'
                   color='secondary'
-                  className='col-span-2 font-mainFont font-bold'
-                  onClick={() => { handleAdmin() }}
+                  className='col-span-2 font-mainFont'
+                  onClick={()=> {handleAdmin()}}
                 >
                   Admin
                 </Button>

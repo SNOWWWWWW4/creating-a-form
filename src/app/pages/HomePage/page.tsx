@@ -6,8 +6,11 @@ const HomePage = () => {
   return (
     <div className='bg-studentBg bg-cover font-mainFont h-screen'>
       <NavBarComponent/>
-      <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
-        <div className='grid justify-center'>
+      
+      <div className='lg:ms-[190px] lg:me-[26px] pt-20 md:pt-32  '>
+      <h1 className='text-center text-5xl text-white mb-4'>Edit Form</h1>
+       
+        <div className=' md:grid md:justify-center px-0 md:px-5 lg:grid lg:justify-center   '>
           <HomeFormComponent/>
 
         </div>

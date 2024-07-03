@@ -89,12 +89,12 @@ const StudentTableComponent = (props: {
             alt='remove icon'
           />}
         </div>
-        <div>{`First Name: ${props.studentInfo.first}`}</div>
+        <div className='pt-5'>{`First Name: ${props.studentInfo.first}`}</div>
         <div>{`Last Name: ${props.studentInfo.last}`}</div>
         <div>{`Birthday: ${props.studentInfo.doB.split("T")[0]}`}</div>
         <div>{`Email: ${props.studentInfo.email}`}</div>
         <div>{`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}</div>
-        <div>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>
+        <div className='pb-5'>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>
         <hr />
       </div>
     </div>
