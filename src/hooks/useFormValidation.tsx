@@ -1,6 +1,9 @@
 import { IFormData, IStudent } from '@/Interfaces/Interfaces';
 import { createRegirstration } from '@/utils/DataServices';
 import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const useFormValidation = () => {
 
@@ -121,6 +124,13 @@ const useFormValidation = () => {
 
             const info = await createRegirstration(submitedUser); 
             setFormSuccessful(true);
+            toast.success('Successfully added!', {
+              icon: (
+                <div style={{ width: '40px', height: '40px' }}>
+                  <img src="/826853.png" alt="Custom Icon" width={24} height={24} />
+                </div>
+              )
+            })
             resetFields();
 
         } catch (error: any) {

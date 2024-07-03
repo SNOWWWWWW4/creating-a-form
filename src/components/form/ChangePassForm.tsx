@@ -236,6 +236,12 @@ const ChangePassForm = () => {
                 </div>
               </div>
             </div>
+
+            <div className='col-span-2 mt-4 flex justify-center'>
+              <Button variant='contained' className=' w-full font-mainFont bg-fuchsia-400 hover:bg-fuchsia-800' onClick={handleResetPassword}>
+                Continue
+              </Button>
+              </div>
           </FormControl>
         </div>
       ) : (
