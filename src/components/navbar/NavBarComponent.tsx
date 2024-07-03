@@ -23,6 +23,7 @@ const NavBarComponent = () => {
       setIsAdmin(true);
     }
   }, []);
+  
 
   return (
     <div>
@@ -62,7 +63,8 @@ const NavBarComponent = () => {
               onClick={handleLogout}
               variant='contained'
               size='large'
-              className='bg-fuchsia-700 hover:bg-fuchsia-800'
+              style={{font: 'mainFont'}}
+              className='bg-fuchsia-700 font-mainFont hover:bg-fuchsia-800'
             >
               Logout
           </Button>
@@ -101,6 +103,7 @@ const NavBarComponent = () => {
               onClick={handleLogout}
               variant='contained'
               size='large'
+              sx={{fontFamily: 'mainFont'}}
               className='absolute bottom-20 left-7 bg-fuchsia-700 hover:bg-fuchsia-800'
             >
               Logout
