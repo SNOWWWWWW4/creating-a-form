@@ -10,7 +10,7 @@ const HomePage = () => {
       <div className='lg:ms-[190px] lg:me-[26px] pt-20 md:pt-32  '>
       <h1 className='text-center text-5xl text-white mb-4'>Edit Form</h1>
        
-        <div className=' md:grid md:justify-center px-5 lg:grid lg:justify-center   '>
+        <div className=' md:grid md:justify-center px-0 md:px-5 lg:grid lg:justify-center   '>
           <HomeFormComponent/>
 
         </div>
