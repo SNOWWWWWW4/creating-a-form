@@ -2,7 +2,7 @@
 import StudentTableComponent from '@/components/Student/StudentTableComponent';
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import React, { useEffect, useState } from 'react';
-import { getAllStudents, removeStudent } from '@/utils/DataServices';
+import { getAllStudents, removeStudent, updateStudent } from '@/utils/DataServices';
 import { IStudent } from '@/Interfaces/Interfaces';
 
 const StudentDirectoryPage = () => {
@@ -81,6 +81,12 @@ const StudentDirectoryPage = () => {
     setStudentArr(updatedStudents);
   };
 
+  const handleUpdateData = async (updatedData: IStudent) => {
+    await updateStudent(updatedData);
+
+    const updatedStudents = await getAllStudents();
+    setStudentArr(updatedStudents);
+  }
 
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -158,7 +164,7 @@ const StudentDirectoryPage = () => {
           </div>
           <div className='border-[#83677e] lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
             {
-              studentArr && studentArr.map((student: any, idx: number) => {
+              studentArr && studentArr.map((student: IStudent, idx: number) => {
                 return (
                   <div key={idx}>
                     <StudentTableComponent
@@ -168,6 +174,7 @@ const StudentDirectoryPage = () => {
                       isEdit={isEdit}
                       setIsEdit={setIsEdit}
                       handleDelete={handleDelete}
+                      handleUpdateData={handleUpdateData}
                     />
                   </div>
 

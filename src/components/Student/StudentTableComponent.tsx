@@ -13,6 +13,7 @@ const StudentTableComponent = (props: {
   isEdit: boolean;
   setIsEdit: (input: boolean) => void;
   handleDelete: (input: number) => void;
+  handleUpdateData: (input: IStudent) => void;
   studentInfo: IStudent
 }) => {
 
@@ -28,8 +29,8 @@ const StudentTableComponent = (props: {
 
   return (
     <div>
-      {props.isDelete && idSelect && <StudentDeleteComponent setIsDelete={props.setIsDelete} handleDelete={props.handleDelete} idSelect={idSelect} />}
-      {props.isEdit && idSelect && <StudentEditsComponent setIsEdit={props.setIsEdit} idSelect={idSelect} />}
+      {props.isDelete && idSelect && <StudentDeleteComponent setIdSelect={setIdSelect} setIsDelete={props.setIsDelete} handleDelete={props.handleDelete} idSelect={idSelect} />}
+      {props.isEdit && idSelect && <StudentEditsComponent setIdSelect={setIdSelect} setIsEdit={props.setIsEdit} handleUpdateData={props.handleUpdateData} idSelect={idSelect} />}
       <div className='hidden lg:grid grid-cols-8 border-y-[#83677e] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#83677e] border-r-[1px] flex items-center break-all'>
           {`${props.studentInfo.first}`}
@@ -53,6 +54,7 @@ const StudentTableComponent = (props: {
         <div className='cols-span-1 px-1 flex justify-between items-center'>
             {isAdmin && <Image
             onClick={() => {
+              setIdSelect(props.studentInfo.id);
               props.setIsEdit(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
