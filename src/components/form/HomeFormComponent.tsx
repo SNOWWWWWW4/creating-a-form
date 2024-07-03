@@ -73,6 +73,7 @@ const HomeFormComponent = () => {
           <div className='grid grid-cols-2 gap-4'>
             <TextField
               label='First Name'
+              color='secondary'
               variant='outlined'
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -91,6 +92,7 @@ const HomeFormComponent = () => {
             <TextField
               label='Last Name'
               variant='outlined'
+              color='secondary'
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               error={!!lastNameError}
@@ -106,7 +108,7 @@ const HomeFormComponent = () => {
               }}
             />
             <TextField
-              
+              color='secondary'
               variant='outlined'
               value={dob}
               onChange={(e) => setDob(e.target.value)}
@@ -126,6 +128,7 @@ const HomeFormComponent = () => {
             />
             <TextField
               label='Phone Number'
+              color='secondary'
               variant='outlined'
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -142,6 +145,7 @@ const HomeFormComponent = () => {
             />
             <TextField
               label='Email'
+              color='secondary'
               variant='outlined'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -159,6 +163,7 @@ const HomeFormComponent = () => {
             />
             <TextField
               label='Address'
+              color='secondary'
               variant='outlined'
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -178,7 +183,7 @@ const HomeFormComponent = () => {
               onClick={handleSubmit}
               variant='contained'
               size='large'
-              className='col-span-2 font-mainFont justify-center'
+              className='col-span-2 font-mainFont justify-center bg-fuchsia-500 hover:bg-fuchsia-600'
             >
               Submit
             </Button>
