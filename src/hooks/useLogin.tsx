@@ -2,6 +2,8 @@ import { ILogin, IToken } from '@/Interfaces/Interfaces';
 import { createAccount, login } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import sunIcon from '/826853.png'
 
 const useLogin = () => {
   const [email, setEmail] = useState<string>('');
@@ -18,6 +20,7 @@ const useLogin = () => {
   const [admin, setAdmin] = useState<boolean>(false);
 
   const router = useRouter();
+
 
   // Pushing to change password page
   const changePassword = () => {
@@ -108,6 +111,13 @@ const useLogin = () => {
         await createAccount(userData);
         setSwitchBool(false);
         setCreateAccSuccess(true);
+        toast.success('Account successfully created!', {
+          icon: (
+            <div style={{ width: '40px', height: '40px' }}>
+              <img src="/826853.png" alt="Custom Icon" width={24} height={24} />
+            </div>
+          )
+        })
         resetFields();
       } else {
         const userData: ILogin = {
@@ -121,6 +131,13 @@ const useLogin = () => {
 
         if (token.token) {
           setLoginSuccess(true);
+          toast.success('Welcome back! Loading next page...', {
+            icon: (
+              <div style={{ width: '40px', height: '40px' }}>
+                <img src="/826853.png" alt="Custom Icon" width={24} height={24} />
+              </div>
+            )
+          })
 
           localStorage.setItem('admin', JSON.stringify(token.adminStatus));
 
@@ -132,7 +149,7 @@ const useLogin = () => {
 
             setTimeout(() => {
               router.push('/pages/HomePage')
-            }, 1000);
+            }, 3000);
           } else {
             alert('Something went wrong');
           }

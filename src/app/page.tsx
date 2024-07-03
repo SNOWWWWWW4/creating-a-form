@@ -16,6 +16,8 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import { green, red } from '@mui/material/colors';
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
 
@@ -50,6 +52,15 @@ export default function Home() {
   const handleEyeClickTwo = () => setVisibleTwo(!visibleTwo);
 
   const router = useRouter();
+
+  const contextClass = {
+    success: "bg-blue-600",
+    error: "bg-red-600",
+    info: "bg-gray-600",
+    warning: "bg-orange-400",
+    default: "bg-yellow-100",
+    dark: "bg-white-600 font-gray-300",
+  };
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
@@ -105,7 +116,7 @@ export default function Home() {
   return (
     <main className='min-h-screen bg-mainBg bg-cover grid grid-cols-1 computer:grid-cols-2 justify-between p-4 mobile:p-10 tablet:p-24'>
       <section className='flex flex-col justify-center items-center'>
-        <img className='w-96' src='/moon.png' />
+        <img className='lg:w-96 md:w-80 w-60' src='/moon.png' />
       </section>
       <section className='flex flex-col justify-center items-center'>
         {switchBool ? (
@@ -202,8 +213,8 @@ export default function Home() {
                       />
                       <p
                         className={`${password.length > 14
-                            ? 'text-green-600'
-                            : 'text-red-600'
+                          ? 'text-green-600'
+                          : 'text-red-600'
                           } text-xs my-auto`}
                       >
                         15 or more Characters long
@@ -355,7 +366,7 @@ export default function Home() {
                 <Button
                   variant='outlined'
                   color='secondary'
-                  className='col-span-2 font-mainFont font-bold'
+                  className='col-span-2 font-mainFont'
                   onClick={()=> {handleAdmin()}}
                 >
                   Admin
@@ -389,39 +400,16 @@ export default function Home() {
         )}
       </section>
 
-      <Snackbar
-        open={loginSuccess}
-        autoHideDuration={3500}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <Alert
-          onClose={handleClose}
-          severity='success'
-          variant='filled'
-          sx={{ width: '100%' }}
-          className='font-mainFont'
-        >
-          Welcome! Loading next page...
-        </Alert>
-      </Snackbar>
+      <ToastContainer
+        toastClassName={() =>
+          "relative p-1 flex font-bold min-h-10 rounded-md bg-[#d3ecbc] justify-between overflow-hidden text-black cursor-pointer"
+        }
+        bodyClassName={() => "font-mainFont font-bold bg-[#d3ecbc] text-black p-3 font-med inline-flex block "}
+        position="top-right"
+        icon={false}
+        autoClose={2000}
+      />
 
-      <Snackbar
-        open={createAccSuccess}
-        autoHideDuration={3500}
-        onClose={handleCloseTwo}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <Alert
-          onClose={handleClose}
-          severity='success'
-          variant='filled'
-          sx={{ width: '100%' }}
-          className='font-mainFont'
-        >
-          Account successfully created!
-        </Alert>
-      </Snackbar>
     </main>
   );
 }
