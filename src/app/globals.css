@@ -2,23 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
-  text-decoration: none;
-  color: black;
-  &:hover {
-    text-decoration: underline;
-  }
+.main{
+    .header{
+        display: flex;
+        gap: 15px;
+        padding: 40px;
+        height: 30px;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        a{
+            text-decoration: none;
+            color: black;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .page{
+        padding: 40px;
+        min-height: calc(100vh - 80px);
+    }
+    h1{
+        margin-top: 50px;
+    }
+    .body{
+        display: flex;
+        gap: 40px;
+    }
+    
 }
 
-body {
-  display: flex;
-  gap: 40px;
-}
 .flex-group {
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+ 
 }
 
 .felx-group > * {
@@ -26,13 +46,14 @@ body {
   flex: 1;
 }
 
-@layer components {
-  @font-face {
-    font-family: mainFont;
-    src: url(../assets/Handlee/Handlee-Regular.ttf);
+@layer components{
+    @font-face{
+        font-family: mainFont;
+        src: url(../assets/Handlee/Handlee-Regular.ttf)
+    }
+  
   }
-}
 
-.MuiTextField-root {
-  font-family: url(../assets/Handlee/Handlee-Regular.ttf);
-}
+  .MuiTextField-root{
+    font-family: url(../assets/Handlee/Handlee-Regular.ttf);
+  }
