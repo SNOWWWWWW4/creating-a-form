@@ -30,7 +30,7 @@ const config: Config = {
     },
     extend: {
       backgroundImage: {
-        'mainBg': 'url(/formbg.jpg)',
+        'mainBg': 'url(/formbg.png)',
         'studentBg' : 'url(/night4.jpg)',
         'toastBg': 'url(/stars.jpg)'
       },
