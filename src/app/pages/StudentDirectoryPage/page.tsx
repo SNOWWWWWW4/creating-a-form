@@ -1,9 +1,5 @@
 'use client';
-
-import StudentEditsComponent from '@/components/Student/StudentEditsComponent';
 import StudentTableComponent from '@/components/Student/StudentTableComponent';
-import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent';
-
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import React, { useEffect, useState } from 'react';
 import { getAllStudents, removeStudent } from '@/utils/DataServices';
@@ -77,8 +73,9 @@ const StudentDirectoryPage = () => {
     getStudent();
   }, [sortBy])
 
-  const handleDelete = async (email: string) => {
-    await removeStudent(email);
+  const handleDelete = async (ID: number) => {
+    const getStudent: IStudent[] = studentArr.filter(user => user.id == ID);
+    await removeStudent(getStudent[0].email);
 
     const updatedStudents = await getAllStudents();
     setStudentArr(updatedStudents);
@@ -90,7 +87,6 @@ const StudentDirectoryPage = () => {
 
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
-      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
         <h1 className='text-white text-5xl font-mainFont mb-4'>
@@ -169,6 +165,7 @@ const StudentDirectoryPage = () => {
                       studentInfo={student}
                       isDelete={isDelete}
                       setIsDelete={setIsDelete}
+                      isEdit={isEdit}
                       setIsEdit={setIsEdit}
                       handleDelete={handleDelete}
                     />

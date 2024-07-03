@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFormValidation from '@/hooks/useFormValidation';
 import {
   Alert,
@@ -8,10 +8,11 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material';
-import { updateStudent } from '@/utils/DataServices';
+import { getAllStudents, updateStudent } from '@/utils/DataServices';
 import { IStudent } from '@/Interfaces/Interfaces';
 
 const StudentEditsComponent = (props: {
+  idSelect: number;
   setIsEdit: (input: boolean) => void;
 }) => {
   const {
@@ -38,6 +39,26 @@ const StudentEditsComponent = (props: {
     setFormSuccessful,
   } = useFormValidation();
 
+  useEffect(() => {
+    const getPerson = async () => {
+      let studentsArr = await getAllStudents();
+      const getStudent: IStudent[] = studentsArr.filter(user => user.id == props.idSelect);
+
+      setFirstName(getStudent[0].first)
+      setLastName(getStudent[0].last)
+      setDob(getStudent[0].doB)
+      setFirstName(getStudent[0].email)
+      if (getStudent[0].address !== null) {
+        setAddress(getStudent[0].address)
+      }
+      if (getStudent[0].phone !== null) {
+        setPhone(getStudent[0].phone)
+      }
+    }
+
+    getPerson();
+  }, [])
+
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleUpdateData();
@@ -46,7 +67,7 @@ const StudentEditsComponent = (props: {
 
   const handleUpdateData = () => {
     const updatedData: IStudent = {
-      id: 0,
+      id: props.idSelect,
       first: firstName,
       last: lastName,
       email: email,
@@ -76,7 +97,7 @@ const StudentEditsComponent = (props: {
 
   return (
     <>
-      <div className='  absolute top-1/2 -translate-y-1/2 z-[100] justify-center  flex w-full bg-black bg-opacity-80 h-screen  items-center'>
+      <div className='  absolute left-0 top-1/2 -translate-y-1/2 z-[100] justify-center  flex w-full bg-black bg-opacity-80 h-screen  items-center'>
         <div className='w-full mx-[100px] bg-[#ffffff] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
           <FormControl fullWidth>
             <div className='grid grid-cols-2 gap-4'>
