@@ -93,45 +93,45 @@ const StudentDirectoryPage = () => {
       {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
-        <h1 className='text-white text-5xl font-mainFont mb-4'>
+        <h1 className='text-white text-5xl text-center lg:text-left font-mainFont mb-4'>
           Student Directory
         </h1>
-        <div className='bg-studentDirect min-h-[500px] h-auto rounded-[10px]'>
-          <div className='h-20 grid grid-cols-5 text-white font-thin text-[16px] rounded-t-[10px]'>
+        <div className='bg-studentDirect   min-h-[500px] h-auto rounded-[10px]'>
+          <div className='h-20 grid grid-cols-5   text-white font-thin text-[16px] rounded-t-[10px]'>
             <div 
             onClick={() => {
               setSortBy(0);
             }}
-            className={sortBy == 0 ? `bg-studentDirect hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex text-black hover:text-white items-center justify-center rounded-tl-[10px] font-bold` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
-              Default
+            className={sortBy == 0 ? `bg-studentDirect   hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex text-black hover:text-white items-center justify-center rounded-tl-[10px] font-bold` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tl-[10px] cursor-pointer flex items-center justify-center rounded-tl-[10px]`}>
+            <p className='text-sm md:text-md lg:text-lg  text-center'>  Default </p>
             </div>
             <div 
             onClick={() => {
               setSortBy(1);
             }}
-            className={sortBy == 1 ? `bg-studentDirect hover:bg-[#30252d] cursor-pointer flex items-center justify-center font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
-              First Name A-Z
+            className={sortBy == 1 ? `bg-studentDirect   hover:bg-[#30252d] cursor-pointer flex items-center justify-center font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
+          <p className='text-sm md:text-md lg:text-lg  text-center'>   First Name A-Z </p>
             </div>
             <div 
             onClick={() => {
               setSortBy(2);
             }}
-            className={sortBy == 2 ? `bg-studentDirect hover:bg-[#30252d] cursor-pointer flex items-center justify-center font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d]  cursor-pointer flex items-center justify-center`}>
-              First Name Z-A
+            className={sortBy == 2 ? `bg-studentDirect  hover:bg-[#30252d] cursor-pointer flex items-center justify-center font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d]  cursor-pointer flex items-center justify-center`}>
+            <p className='text-sm md:text-md lg:text-lg text-center'>   First Name Z-A </p>
             </div>
             <div 
             onClick={() => {
               setSortBy(3);
             }}
-            className={sortBy == 3 ? `bg-studentDirect hover:bg-[#3b2d2e] cursor-pointer flex items-center justify-center font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
-              Last Name A-Z
+            className={sortBy == 3 ? `bg-studentDirect  hover:bg-[#3b2d2e] cursor-pointer flex items-center text-sm justify-center font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d] cursor-pointer flex items-center justify-center`}>
+             <p className='text-sm md:text-md lg:text-lg  text-center'> Last Name A-Z </p>
             </div>
             <div 
             onClick={() => {
               setSortBy(4);
             }}
-            className={sortBy == 4 ? `bg-studentDirect hover:bg-[#30252d] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px] font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
-              Last Name Z-A
+            className={sortBy == 4 ? `bg-studentDirect  hover:bg-[#30252d] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px] font-bold text-black hover:text-white` : `bg-[#53404f] hover:bg-[#30252d] hover:rounded-tr-[10px] cursor-pointer flex items-center justify-center rounded-tr-[10px]`}>
+            <p className='text-sm md:text-md lg:text-lg  text-center'>   Last Name Z-A </p>
             </div>
           </div>
           <div className='bg-[#83677e] h-[40px] mt-6 mx-4 hidden lg:grid font-medium rounded-t-[10px]'>
@@ -160,7 +160,7 @@ const StudentDirectoryPage = () => {
               </div>
             </div>
           </div>
-          <div className='border-[#83677e] lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
+          <div className='border-[#83677e] mt-5 lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
             {
               studentArr && studentArr.map((student: any, idx: number) => {
                 return (
