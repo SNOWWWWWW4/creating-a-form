@@ -1,3 +1,15 @@
+'use client';
+import React from 'react';
+import useFormValidation from '@/hooks/useFormValidation';
+import {
+  Alert,
+  Button,
+  FormControl,
+  Snackbar,
+  TextField,
+} from '@mui/material';
+import { updateStudent } from '@/utils/DataServices';
+import { IStudent } from '@/Interfaces/Interfaces';
 "use client";
 import React from "react";
 import useFormValidation from "@/hooks/useFormValidation";
@@ -35,9 +47,25 @@ const StudentEditsComponent = (props: {
   } = useFormValidation();
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleUpdateData();
+    };
     if (e.key === "Enter") handleSubmit();
   };
 
+  const handleUpdateData = () => {
+    const updatedData: IStudent = {
+      id: 0,
+      first: firstName,
+      last: lastName,
+      email: email,
+      doB: dob,
+      address: address,
+      phone: phone,
+    }
+
+    updateStudent(updatedData);
+  }
   const ogEmail = props.currentStudent.email;
   console.log(ogEmail);
 
@@ -144,6 +172,7 @@ const StudentEditsComponent = (props: {
                 </Button>
                 <Button
                   onClick={() => {
+                    handleUpdateData();
                     handleUpdate(ogEmail);
                     props.setIsEdit(false);
                   }}

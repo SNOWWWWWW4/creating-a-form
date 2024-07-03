@@ -10,20 +10,10 @@ const ManagementTableComponent = (props: {
 }) => {
   return (
     <div>
-      <div className='hidden lg:grid grid-cols-4 border-y-[#ddc7cb] border-y-[1px]'>
-        <div className='col-span-1 px-1 border-r-[#ddc7cb] border-r-[1px] flex items-center break-all'>
-          {`${!props.userInfo.first && "N/A"}`}
-        </div>
-        <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-        {`${!props.userInfo.last && "N/A"}`}
-        </div>
-        <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
-        {`${!props.userInfo.doB && "N/A"}`}
-        </div>
-        <div className='col-span-1 px-1 border-x-[#ddc7cb] border-x-[1px] flex items-center break-all'>
+      <div className='hidden lg:grid grid-cols-1 border-y-[#83677e] border-y-[1px]'>
+        <div className='col-span-1 px-2 border-x-[#83677e] border-x-[1px] py-2 flex items-center break-all'>
         {`${props.userInfo.email}`}
         </div>
-
       </div>
 
       <div className='bg-[#ddc7cb] lg:hidden text-center'>
@@ -37,18 +27,8 @@ const ManagementTableComponent = (props: {
             src={edit}
             alt='edit icon'
           />
-          {/* <Image
-            onClick={() => {
-              props.setIsDelete(true);
-            }}
-            className='h-[25px] w-[25px] cursor-pointer'
-            src={deleteIcon}
-            alt='remove icon'
-          /> */}
+
         </div>
-        <div>{`${!props.userInfo.first && "N/A"}`}</div>
-        <div>{`${!props.userInfo.last && "N/A"}`}</div>
-        <div>{`${!props.userInfo.doB && "N/A"}`}</div>
         <div>{`${props.userInfo.email}`}</div>
         <hr />
       </div>

@@ -62,7 +62,7 @@ const NavBarComponent = () => {
               onClick={handleLogout}
               variant='contained'
               size='large'
-              className='bg-fuchsia-600 hover:bg-fuchsia-800'
+              className='bg-fuchsia-700 hover:bg-fuchsia-800'
             >
               Logout
           </Button>
@@ -101,7 +101,7 @@ const NavBarComponent = () => {
               onClick={handleLogout}
               variant='contained'
               size='large'
-              className='absolute bottom-20 left-7 bg-fuchsia-500 hover:bg-fuchsia-800'
+              className='absolute bottom-20 left-7 bg-fuchsia-700 hover:bg-fuchsia-800'
             >
               Logout
           </Button>

@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import edit from '@/assets/EditIcon.png';
 import deleteIcon from '@/assets/TrashIcon.png';
 import Image from 'next/image';
+import StudentDeleteComponent from './StudentDeleteComponent';
 import { IStudent } from '@/Interfaces/Interfaces';
 
 
 const StudentTableComponent = (props: {
+  isDelete: boolean;
   setIsDelete: (input: boolean) => void;
   setIsEdit: (input: boolean) => void;
-  studentInfo: IStudent;
-  setCurrentStudent: (input: any) => void;
+  handleDelete: (input: string) => void;
+  studentInfo: IStudent
 }) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -19,10 +21,12 @@ const StudentTableComponent = (props: {
     setIsAdmin(true);
   }
 }, []);
+
+  const [emailToDelete, setEmailToDelete] = useState<string>();
+
   return (
     <div>
-
-      {/* Desktop */}
+      {props.isDelete && emailToDelete && <StudentDeleteComponent setIsDelete={props.setIsDelete} handleDelete={props.handleDelete} emailToDelete={emailToDelete} />}
       <div className='hidden lg:grid grid-cols-8 border-y-[#83677e] border-y-[1px]'>
         <div className='col-span-1 px-1 border-r-[#83677e] border-r-[1px] flex items-center break-all'>
           {`${props.studentInfo.first}`}
@@ -31,17 +35,20 @@ const StudentTableComponent = (props: {
         {`${props.studentInfo.last}`}
         </div>
         <div className='col-span-1 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
-          {`${props.studentInfo.doB}`}
+          {`${props.studentInfo.doB.split("T")[0]}`}
         </div>
         <div className='col-span-2 px-1 border-x-[#83677e] border-x-[1px] flex items-center break-all'>
         {`${props.studentInfo.email}`}
         </div>
         <div className='col-span-1 px-1 border-l-[#83677e] border-l-[1px] flex items-center break-words'>
-        {`${props.studentInfo.address == "" && "N/A"}`}
+        {`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}
         </div>
-        <div className='col-span-2 px-1 border-x-[#83677e] border-x-[1px] flex items-center justify-between break-all'>
-        {`${props.studentInfo.phone == "" && "N/A"}`}
-          {isAdmin && <Image
+        <div className='col-span-1 px-1 border-x-[#83677e] border-x-[1px] flex items-center justify-between break-all'>
+        {`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}
+          
+        </div>
+        <div className='cols-span-1 px-1 flex justify-between items-center'>
+            {isAdmin && <Image
             onClick={() => {
               props.setIsEdit(true);
               props.setCurrentStudent(props.studentInfo)
@@ -52,6 +59,7 @@ const StudentTableComponent = (props: {
           />}
           {isAdmin && <Image
             onClick={() => {
+              setEmailToDelete(props.studentInfo.email);
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -75,6 +83,7 @@ const StudentTableComponent = (props: {
           />}
           {isAdmin && <Image
             onClick={() => {
+              setEmailToDelete(props.studentInfo.email);
               props.setIsDelete(true);
             }}
             className='h-[25px] w-[25px] cursor-pointer'
@@ -84,10 +93,10 @@ const StudentTableComponent = (props: {
         </div>
         <div>{`First Name: ${props.studentInfo.first}`}</div>
         <div>{`Last Name: ${props.studentInfo.last}`}</div>
-        <div>{`Birthday: ${props.studentInfo.doB}`}</div>
+        <div>{`Birthday: ${props.studentInfo.doB.split("T")[0]}`}</div>
         <div>{`Email: ${props.studentInfo.email}`}</div>
-        <div>{`Address: ${props.studentInfo.address == "" && "N/A"}`}</div>
-        <div>{`Phone: ${props.studentInfo.phone == "" && "N/A"}`}</div>
+        <div>{`${props.studentInfo.address ? props.studentInfo.address : "N/A"}`}</div>
+        <div>{`${props.studentInfo.phone ? props.studentInfo.phone : "N/A"}`}</div>
         <hr />
       </div>
 

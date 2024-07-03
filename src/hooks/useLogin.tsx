@@ -42,6 +42,9 @@ const useLogin = () => {
     }
 
     // password
+    const specialCharacterRegex = /^[A-Za-z0-9?!@#$%^&*]*$/;
+    const requiredSpecialCharacterRegex = /[?@#\$%\^&\*!]/;
+
     if (password === '') {
       setPasswordError(
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
@@ -62,9 +65,14 @@ const useLogin = () => {
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
       valid = false;
-    } else if (!/[?@#\$%\^&\*!]/.test(password)) {
+    } else if (!requiredSpecialCharacterRegex.test(password)) {
       setPasswordError(
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
+      );
+      valid = false;
+    } else if (!specialCharacterRegex.test(password)) {
+      setPasswordError(
+        'Password can only include special characters from ? ! @ # $ % ^ & *, and must have at least 1 uppercase letter, and 1 number'
       );
       valid = false;
     } else {

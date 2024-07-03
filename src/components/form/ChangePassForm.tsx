@@ -105,6 +105,7 @@ const ChangePassForm = () => {
             <div className='grid grid-cols-1 tablet:grid-cols-2 gap-4 justify-center'>
               <TextField
                 label='Password'
+                color='secondary'
                 variant='outlined'
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
@@ -131,6 +132,7 @@ const ChangePassForm = () => {
               />
               <TextField
                 label='Confirm Password'
+                color='secondary'
                 variant='outlined'
                 value={confirmNewPassword}
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
@@ -243,6 +245,7 @@ const ChangePassForm = () => {
             <div className='grid grid-cols-2 gap-4 justify-center'>
               <TextField
                 label='Email'
+                color='secondary'
                 variant='outlined'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -260,6 +263,7 @@ const ChangePassForm = () => {
               />
               <TextField
                 label='Old Password'
+                color='secondary'
                 variant='outlined'
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
@@ -284,7 +288,7 @@ const ChangePassForm = () => {
                 className='col-span-2'
               />
               <div className='col-span-2 flex justify-center'>
-              <Button variant='contained' className=' w-full font-mainFont' onClick={handleContinue}>
+              <Button variant='contained' className=' w-full font-mainFont bg-fuchsia-400 hover:bg-fuchsia-800' onClick={handleContinue}>
                 Continue
               </Button>
               </div>
@@ -293,7 +297,7 @@ const ChangePassForm = () => {
           </FormControl>
           <div className='flex-group mt-4'>
             <h1>Go back?</h1>
-            <Button variant='text' color='primary' className='font-mainFont' onClick={handleGoBack}>
+            <Button variant='text' color='primary' className='font-mainFont font-bold underline text-blue-800 hover:text-sky-600' onClick={handleGoBack}>
               Return to Login
             </Button>
           </div>
