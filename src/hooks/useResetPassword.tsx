@@ -2,6 +2,7 @@ import { INewPassword } from '@/Interfaces/Interfaces';
 import { resetPassword } from '@/utils/DataServices';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
 
 
 const useResetPassword = () => {
@@ -149,11 +150,18 @@ const useResetPassword = () => {
       await resetPassword(newPass).then(data => {
         if (data) {
           setSuccessfulPasswordReset(true);
+          toast.success('Password successfully reset! Routing to login...', {
+            icon: (
+              <div style={{ width: '40px', height: '40px' }}>
+                <img src="/826853.png" alt="Custom Icon" width={24} height={24} />
+              </div>
+            )
+          });
           setTimeout(() => {
             router.push('/')
             resetFields();
             setSwitchBoolTwo(false);
-          }, 1000)
+          }, 5000)
         }
       })
 
