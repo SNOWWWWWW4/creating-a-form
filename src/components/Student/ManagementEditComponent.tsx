@@ -8,10 +8,8 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material';
-import { updateStudent } from '@/utils/DataServices';
-import { IStudent } from '@/Interfaces/Interfaces';
 
-const StudentEditsComponent = (props: {
+const ManagementEditComponent = (props: {
   setIsEdit: (input: boolean) => void;
 }) => {
   const {
@@ -39,24 +37,9 @@ const StudentEditsComponent = (props: {
   } = useFormValidation();
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      handleUpdateData();
-    };
+    if (e.key === 'Enter') handleSubmit();
   };
 
-  const handleUpdateData = () => {
-    const updatedData: IStudent = {
-      id: 0,
-      first: firstName,
-      last: lastName,
-      email: email,
-      doB: dob,
-      address: address,
-      phone: phone,
-    }
-
-    updateStudent(updatedData);
-  }
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -117,16 +100,6 @@ const StudentEditsComponent = (props: {
                 required
               />
               <TextField
-                label='Phone Number'
-                variant='outlined'
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                error={!!phoneError}
-                helperText={phoneError}
-                onKeyDown={handleKeydown}
-                className='col-span-2 sm:col-span-1'
-              />
-              <TextField
                 label='Email'
                 variant='outlined'
                 value={email}
@@ -136,16 +109,6 @@ const StudentEditsComponent = (props: {
                 onKeyDown={handleKeydown}
                 className='col-span-2'
                 required
-              />
-              <TextField
-                label='Address'
-                variant='outlined'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                error={!!addressError}
-                helperText={addressError}
-                onKeyDown={handleKeydown}
-                className='col-span-2'
               />
 
               <div className='flex'>
@@ -161,7 +124,8 @@ const StudentEditsComponent = (props: {
                 </Button>
                 <Button
                   onClick={() => {
-                    handleUpdateData();
+                    handleSubmit();
+
                     props.setIsEdit(false);
                   }}
                   variant='contained'
@@ -194,4 +158,4 @@ const StudentEditsComponent = (props: {
   );
 };
 
-export default StudentEditsComponent;
+export default ManagementEditComponent;

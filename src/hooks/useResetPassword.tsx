@@ -32,6 +32,9 @@ const useResetPassword = () => {
       setEmailError('');
     }
 
+    const specialCharacterRegex = /^[A-Za-z0-9?!@#$%^&*]*$/;
+    const requiredSpecialCharacterRegex = /[?@#\$%\^&\*!]/;
+
     // old password
     if (oldPassword === '') {
       setOldPasswordError(
@@ -53,11 +56,20 @@ const useResetPassword = () => {
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
       valid = false;
-    } else if (!/[?@#\$%\^&\*!]/.test(oldPassword)) {
+    } else if (!requiredSpecialCharacterRegex.test(oldPassword)) {
       setOldPasswordError(
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
+      valid = false;
+    } else if (!specialCharacterRegex.test(oldPassword)) {
+      setOldPasswordError(
+        'Password can only include special characters from ? ! @ # $ % ^ & *, and must have at least 1 uppercase letter, and 1 number'
+      );
+      valid = false;
+    } else {
+      setOldPasswordError('');
     }
+    
     return valid;
   }
 
@@ -76,6 +88,9 @@ const useResetPassword = () => {
   const validatingSecondSetOfInputs = () => {
     let valid = true;
 
+    const specialCharacterRegex = /^[A-Za-z0-9?!@#$%^&*]*$/;
+    const requiredSpecialCharacterRegex = /[?@#\$%\^&\*!]/;
+
     // new password
     if (newPassword === '') {
       setNewPasswordError(
@@ -88,16 +103,24 @@ const useResetPassword = () => {
       );
       valid = false;
     } else if (!/[A-Z]/.test(newPassword)) {
-      
       valid = false;
     } else if (!/\d/.test(newPassword)) {
       setNewPasswordError(
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
-    } else if (!/[?@#\$%\^&\*!]/.test(newPassword)) {
+      valid = false;
+    } else if (!requiredSpecialCharacterRegex.test(newPassword)) {
       setNewPasswordError(
         'Password must be at least 15 characters long and include 1 uppercase letter, 1 number, and 1 special character from (? ! @ # $ % ^ & *)'
       );
+      valid = false;
+    } else if (!specialCharacterRegex.test(newPassword)) {
+      setNewPasswordError(
+        'Password can only include special characters from ? ! @ # $ % ^ & *, and must have at least 1 uppercase letter, and 1 number'
+      );
+      valid = false;
+    } else {
+      setNewPasswordError('');
     }
 
     // confrim new password

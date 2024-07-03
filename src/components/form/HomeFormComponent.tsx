@@ -68,11 +68,12 @@ const HomeFormComponent = () => {
 
   return (
     <>
-      <div className='w-full bg-[#ffffff] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
+      <div className='w-full bg-studentDirect border-8 border-[#83677e] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
         <FormControl fullWidth>
           <div className='grid grid-cols-2 gap-4'>
             <TextField
               label='First Name'
+              color='secondary'
               variant='outlined'
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -81,10 +82,17 @@ const HomeFormComponent = () => {
               onKeyDown={handleKeydown}
               className='col-span-2 sm:col-span-1'
               required
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               label='Last Name'
               variant='outlined'
+              color='secondary'
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               error={!!lastNameError}
@@ -92,8 +100,15 @@ const HomeFormComponent = () => {
               onKeyDown={handleKeydown}
               className='col-span-2 sm:col-span-1'
               required
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
+              color='secondary'
               variant='outlined'
               value={dob}
               onChange={(e) => setDob(e.target.value)}
@@ -104,11 +119,16 @@ const HomeFormComponent = () => {
               type='date'
               InputProps={{
                 inputProps: { min: formattedHundredYearsAgo, max: today },
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
               }}
               required
             />
             <TextField
               label='Phone Number'
+              color='secondary'
               variant='outlined'
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -116,9 +136,16 @@ const HomeFormComponent = () => {
               helperText={phoneError}
               onKeyDown={handleKeydown}
               className='col-span-2 sm:col-span-1'
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               label='Email'
+              color='secondary'
               variant='outlined'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -127,9 +154,16 @@ const HomeFormComponent = () => {
               onKeyDown={handleKeydown}
               className='col-span-2'
               required
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
             <TextField
               label='Address'
+              color='secondary'
               variant='outlined'
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -137,13 +171,19 @@ const HomeFormComponent = () => {
               helperText={addressError}
               onKeyDown={handleKeydown}
               className='col-span-2'
+              InputProps={{
+                className: 'font-mainFont'
+              }}
+              InputLabelProps={{
+                className: 'font-mainFont'
+              }}
             />
 
             <Button
               onClick={handleSubmit}
               variant='contained'
               size='large'
-              className='col-span-2 justify-center'
+              className='col-span-2 font-mainFont justify-center bg-fuchsia-500 hover:bg-fuchsia-600'
             >
               Submit
             </Button>
