@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFormValidation from '@/hooks/useFormValidation';
 import {
   Alert,
@@ -8,12 +8,18 @@ import {
   Snackbar,
   TextField,
 } from '@mui/material';
-import { updateStudent } from '@/utils/DataServices';
+import { getAllStudents, updateStudent } from '@/utils/DataServices';
 import { IStudent } from '@/Interfaces/Interfaces';
+import useFormTypeChecks from '@/hooks/useFormTypeChecks';
 
-const StudentEditsComponent = (props: {
+type StudentTableProps = {
+  idSelect: number;
   setIsEdit: (input: boolean) => void;
-}) => {
+  handleUpdateData: (input: IStudent) => void;
+  setIdSelect: (input: number | undefined) => void;
+}
+
+const StudentEditsComponent = ({ setIsEdit, handleUpdateData, idSelect, setIdSelect }: StudentTableProps) => {
   const {
     firstName,
     setFirstName,
@@ -33,30 +39,36 @@ const StudentEditsComponent = (props: {
     phone,
     setPhone,
     phoneError,
-    handleSubmit,
+    validatingInputs,
     formSuccessful,
-    setFormSuccessful,
-  } = useFormValidation();
+    setFormSuccessful
+  } = useFormTypeChecks();
+
+  useEffect(() => {
+    const getPerson = async () => {
+      let studentsArr = await getAllStudents();
+      const getStudent: IStudent[] = studentsArr.filter(user => user.id == idSelect);
+
+      setFirstName(getStudent[0].first)
+      setLastName(getStudent[0].last)
+      setDob(getStudent[0].doB.split("T")[0])
+      setEmail(getStudent[0].email)
+      if (getStudent[0].address !== null) {
+        setAddress(getStudent[0].address)
+      }
+      if (getStudent[0].phone !== null) {
+        setPhone(getStudent[0].phone)
+      }
+    }
+
+    getPerson();
+  }, [])
 
   const handleKeydown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleUpdateData();
+      passUserData();
     };
   };
-
-  const handleUpdateData = () => {
-    const updatedData: IStudent = {
-      id: 0,
-      first: firstName,
-      last: lastName,
-      email: email,
-      doB: dob,
-      address: address,
-      phone: phone,
-    }
-
-    updateStudent(updatedData);
-  }
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -68,6 +80,24 @@ const StudentEditsComponent = (props: {
     setFormSuccessful(false);
   };
 
+  const passUserData = () =>{
+    const updatedData: IStudent = {
+      id: idSelect,
+      first: firstName,
+      last: lastName,
+      email: email,
+      doB: dob,
+      address: address,
+      phone: phone,
+    }
+
+    if(validatingInputs() === true){
+      handleUpdateData(updatedData);
+      setIsEdit(false);
+      setIdSelect(undefined);
+    };
+  }
+
   const today = new Date().toISOString().split('T')[0];
 
   const hundredYearsAgo = new Date();
@@ -76,7 +106,7 @@ const StudentEditsComponent = (props: {
 
   return (
     <>
-      <div className='  absolute top-1/2 -translate-y-1/2 z-[100] justify-center  flex w-full bg-black bg-opacity-80 h-screen  items-center'>
+      <div className='  absolute left-0 top-1/2 -translate-y-1/2 z-[100] justify-center  flex w-full bg-black bg-opacity-80 h-screen  items-center'>
         <div className='w-full mx-[100px] bg-[#ffffff] shadow-md rounded-lg py-8 px-10 lg:py-14 lg:px-16 space-y-4'>
           <FormControl fullWidth>
             <div className='grid grid-cols-2 gap-4'>
@@ -151,7 +181,8 @@ const StudentEditsComponent = (props: {
               <div className='flex'>
                 <Button
                   onClick={() => {
-                    props.setIsEdit(false);
+                    setIsEdit(false);
+                    setIdSelect(undefined);
                   }}
                   variant='contained'
                   size='large'
@@ -161,8 +192,7 @@ const StudentEditsComponent = (props: {
                 </Button>
                 <Button
                   onClick={() => {
-                    handleUpdateData();
-                    props.setIsEdit(false);
+                    passUserData();
                   }}
                   variant='contained'
                   size='large'

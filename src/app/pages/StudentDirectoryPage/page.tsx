@@ -1,12 +1,8 @@
 'use client';
-
-import StudentEditsComponent from '@/components/Student/StudentEditsComponent';
 import StudentTableComponent from '@/components/Student/StudentTableComponent';
-import StudentDeleteComponent from '@/components/Student/StudentDeleteComponent';
-
 import NavBarComponent from '@/components/navbar/NavBarComponent';
 import React, { useEffect, useState } from 'react';
-import { getAllStudents, removeStudent } from '@/utils/DataServices';
+import { getAllStudents, removeStudent, updateStudent } from '@/utils/DataServices';
 import { IStudent } from '@/Interfaces/Interfaces';
 
 const StudentDirectoryPage = () => {
@@ -77,20 +73,26 @@ const StudentDirectoryPage = () => {
     getStudent();
   }, [sortBy])
 
-  const handleDelete = async (email: string) => {
-    await removeStudent(email);
+  const handleDelete = async (ID: number) => {
+    const getStudent: IStudent[] = studentArr.filter(user => user.id == ID);
+    await removeStudent(getStudent[0].email);
 
     const updatedStudents = await getAllStudents();
     setStudentArr(updatedStudents);
   };
 
+  const handleUpdateData = async (updatedData: IStudent) => {
+    await updateStudent(updatedData);
+
+    const updatedStudents = await getAllStudents();
+    setStudentArr(updatedStudents);
+  }
 
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
   return (
     <div className='bg-studentBg bg-cover font-mainFont from-[#d9818f] to-[#bf8764] min-h-screen'>
-      {isEdit && <StudentEditsComponent setIsEdit={setIsEdit} />}
       <NavBarComponent />
       <div className='mx-4 lg:ms-[190px] lg:me-[26px] pt-14'>
         <h1 className='text-white text-5xl text-center lg:text-left font-mainFont mb-4'>
@@ -162,15 +164,17 @@ const StudentDirectoryPage = () => {
           </div>
           <div className='border-[#83677e] mt-5 lg:border-[2px] h-[325px] mx-4 overflow-y-auto rounded-b-[10px]'>
             {
-              studentArr && studentArr.map((student: any, idx: number) => {
+              studentArr && studentArr.map((student: IStudent, idx: number) => {
                 return (
                   <div key={idx}>
                     <StudentTableComponent
                       studentInfo={student}
                       isDelete={isDelete}
                       setIsDelete={setIsDelete}
+                      isEdit={isEdit}
                       setIsEdit={setIsEdit}
                       handleDelete={handleDelete}
+                      handleUpdateData={handleUpdateData}
                     />
                   </div>
 
