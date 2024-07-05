@@ -75,7 +75,7 @@ const useLogin = () => {
       valid = false;
     } else if (!specialCharacterRegex.test(password)) {
       setPasswordError(
-        'Password can only include special characters from ? ! @ # $ % ^ & *, and must have at least 1 uppercase letter, and 1 number'
+        'Password must not have any spaces, can only include special characters from ? ! @ # $ % ^ & *, must have at least 1 uppercase letter, and 1 number'
       );
       valid = false;
     } else {
